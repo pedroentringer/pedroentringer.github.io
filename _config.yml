@@ -7,7 +7,7 @@ markdown: kramdown
 highlighter: pygments
 logo: false
 paginate: 15
-baseurl: '/'
+baseurl: 'https://http://pedroentringer.github.io/'
 domain_name: 'https://http://pedroentringer.github.io/'
 google_analytics: 'UA-XXXXXXXX-X'
 gems: [jekyll-paginate]
