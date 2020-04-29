@@ -17,13 +17,14 @@ post_class: post-template
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
             <section class="post-meta">
+                {{site.author}}
                 <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
                 {% if page.categories.size > 0 %}
                     {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
                 {% endif %}
             </section>
+            <h1 class="post-title">{{ page.title }}</h1>
         </header>
 
 <!--         <header class="post-header">
@@ -72,7 +73,7 @@ post_class: post-template
                     <h4> {{ site.author }} </h4>
                     <!-- Author Bio -->
                     <p>
-                        Here goes the author description. You might want to place some links too in here
+                        Graduado em Sistemas de Informação, apaixonado por novas tecnologias. Gosta de criar sistemas funcionais que resolvem problemas reais.
                     </p>
                 </section>
             {% endif %}
