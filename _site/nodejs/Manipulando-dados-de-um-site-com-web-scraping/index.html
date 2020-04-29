@@ -66,11 +66,19 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">cheerio</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span>
 <span class="k">import</span> <span class="nx">parseTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./parseTable</span><span class="dl">'</span>
-<span class="k">import</span> <span class="nx">puppeteer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span></code></pre></figure>
+<span class="k">import</span> <span class="nx">puppeteer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span>
+
+  <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
+  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">setViewport</span><span class="p">({</span> <span class="na">width</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">800</span> <span class="p">})</span>
+  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://www.littlerock.com.br/admin</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">import</span> <span class="nx">cheerio</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span>
 <span class="k">import</span> <span class="nx">parseTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./parseTable</span><span class="dl">'</span>
-<span class="k">import</span> <span class="nx">puppeteer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span></code></pre></figure>
+<span class="k">import</span> <span class="nx">puppeteer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span>
+
+  <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
+  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">setViewport</span><span class="p">({</span> <span class="na">width</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">800</span> <span class="p">})</span>
+  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://www.littlerock.com.br/admin</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
 <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll’s GitHub repo</a>.</p>
 
