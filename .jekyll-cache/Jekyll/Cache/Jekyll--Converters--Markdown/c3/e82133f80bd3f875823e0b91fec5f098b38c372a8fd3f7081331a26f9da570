@@ -1,0 +1,50 @@
+I"�<p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
+To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">import</span> <span class="nx">cheerio</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">cheerio</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">parseTable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./parseTable</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">puppeteer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span>
+
+<span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span>
+
+<span class="cm">/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */</span>
+<span class="kd">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">Model</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="cm">/** @type {import('@adonisjs/framework/src/Hash')} */</span>
+<span class="kd">const</span> <span class="nx">Hash</span> <span class="o">=</span> <span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hash</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nx">User</span> <span class="kd">extends</span> <span class="nx">Model</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">boot</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">.</span><span class="nx">boot</span><span class="p">()</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">addHook</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeCreate</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">UserHook.sendNewUserEmail</span><span class="dl">'</span><span class="p">)</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">addHook</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeSave</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="nx">userInstance</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">userInstance</span><span class="p">.</span><span class="nx">dirty</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">userInstance</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Hash</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="nx">userInstance</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+
+  <span class="p">}</span>
+
+  <span class="nx">tokens</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasMany</span><span class="p">(</span><span class="dl">'</span><span class="s1">App/Models/Token</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">branches</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">belongsToMany</span><span class="p">(</span><span class="dl">'</span><span class="s1">App/Models/Branch</span><span class="dl">'</span><span class="p">).</span><span class="nx">pivotTable</span><span class="p">(</span><span class="dl">'</span><span class="s1">user_branches</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="nx">accessGroups</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">belongsToMany</span><span class="p">(</span><span class="dl">'</span><span class="s1">App/Models/GroupAccess</span><span class="dl">'</span><span class="p">).</span><span class="nx">pivotTable</span><span class="p">(</span><span class="dl">'</span><span class="s1">user_group_accesses</span><span class="dl">'</span><span class="p">).</span><span class="nx">pivotModel</span><span class="p">(</span><span class="dl">'</span><span class="s1">App/Models/UserGroupAccess</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">User</span></code></pre></figure>
+
+<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll’s GitHub repo</a>.</p>
+
+:ET

@@ -10,24 +10,49 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 Jekyll also offers powerful support for code snippets:
 
-{% highlight js %}
-import cheerio from 'cheerio'
-import parseTable from './parseTable'
-import puppeteer from 'puppeteer'
-
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1500, height: 800 })
-  await page.goto('https://www.littlerock.com.br/admin')
-{% endhighlight %}
 
 {% highlight javascript %}
 import cheerio from 'cheerio'
 import parseTable from './parseTable'
 import puppeteer from 'puppeteer'
 
-  const page = await browser.newPage()
-  await page.setViewport({ width: 1500, height: 800 })
-  await page.goto('https://www.littlerock.com.br/admin')
+'use strict'
+
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Model = use('Model')
+
+/** @type {import('@adonisjs/framework/src/Hash')} */
+const Hash = use('Hash')
+
+class User extends Model {
+  static boot () {
+    super.boot()
+
+    this.addHook('beforeCreate', 'UserHook.sendNewUserEmail')
+
+    this.addHook('beforeSave', async userInstance => {
+      if (userInstance.dirty.password) {
+        userInstance.password = await Hash.make(userInstance.password)
+      }
+    })
+
+  }
+
+  tokens () {
+    return this.hasMany('App/Models/Token')
+  }
+
+  branches () {
+    return this.belongsToMany('App/Models/Branch').pivotTable('user_branches')
+  }
+
+  accessGroups () {
+    return this.belongsToMany('App/Models/GroupAccess').pivotTable('user_group_accesses').pivotModel('App/Models/UserGroupAccess')
+  }
+
+}
+
+module.exports = User
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
