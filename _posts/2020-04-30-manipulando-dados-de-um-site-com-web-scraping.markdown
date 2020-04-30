@@ -18,10 +18,9 @@ Mas vamos direto ao ponto, aqui vamos aplicar o Web Scraping em um site simples 
 #### Manipulando dados de um site simples
 Pra começar vamos criar nosso projeto bem rapidinho
 
-{% prism bash %}
-$ yarn init -y
+<pre><code class="language-bash">$ yarn init -y
 $ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser
-{% endprism %}
+</code></pre>
 
 Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.
 
@@ -44,14 +43,11 @@ O desafio vai ser buscar o titulo do primeiro post desse nosso blog aqui.
 
 Pra fazer isso vamos criar nosso primeiro arquivo **index.js** e já importar o _axios_ e o _cheerio_ nele
 
-{% prism javascript %}
-const axios = require('axios')
+<pre><code class="language-javascript">const axios = require('axios')
 const cheerio = require('cheerio')
-{% endprism %}
-
+</code></pre>
 Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:
-{% prism javascript %}
-const webscraping = async () => {
+<pre><code class="language-javascript">const webscraping = async () => {
 
   const { data } = await axios.get('https://pedroentringer.dev')
 
@@ -65,12 +61,11 @@ const webscraping = async () => {
 
 }
 webscraping()
-{% endprism %}
+</code></pre>
 
 E o resultado disso será:
-{% prism javascript %}
-Manipulando dados de um site com Web Scraping
-{% endprism %}
+<pre><code class="language-javascript">Manipulando dados de um site com Web Scraping
+</code></pre>
 
 Simples né? Agora vamos complicar um pouco mais.
 
@@ -80,17 +75,14 @@ Agora imagine um cenário que você está fazendo um projeto freelancer pra uma 
 Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.
 
 Vamos lá, importando todas as libs:
-{% prism javascript %}
-import cheerio from 'cheerio'
+<pre><code class="language-javascript">import cheerio from 'cheerio'
 import parseTable from '@pedroentringer/cheerio-table-parser'
 import puppeteer from 'puppeteer'
-{% endprism %}
+</code></pre>
 
 Repare que substituimos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e **daaaale**.
-{% prism javascript %}
-
-//Com o puppeteer eu chamo um navegador
+<pre><code class="language-javascript">//Com o puppeteer eu chamo um navegador
 const browser = await puppeteer.launch({
   headless: true //Aqui eu defino se quero que ele apareça ou não => true (não aparece) | false (aparece)
 })
@@ -153,12 +145,11 @@ try {
   await browser.close()
   console.error(err)
 }
-{% endprism %}
+</code></pre>
 
 O mais legal é o resultado super fácil de manipular, veja:
 
-{% prism javascript %}
-[
+<pre><code class="language-javascript">[
   {
     nome: 'Camiseta Infantil Ac/Dc Preta',
     preco: 'R$ 42,90',
@@ -185,7 +176,7 @@ O mais legal é o resultado super fácil de manipular, veja:
     visitas: 141
   }
 ]
-{% endprism %}
+</code></pre>
 
 Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe
 

@@ -3,11 +3,11 @@
   <channel>
     <title></title>
     <description>Um tanto quanto curioso</description>
-    <link>https://pedroentringer.dev//</link>
-    <atom:link href="https://pedroentringer.dev//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 11:50:26 -0300</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 11:50:26 -0300</lastBuildDate>
-    <generator>Jekyll v4.0.0</generator>
+    <link>http://localhost:4000//</link>
+    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 30 Apr 2020 12:14:48 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 12:14:48 -0300</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Manipulando dados de um site com Web Scraping</title>
@@ -26,10 +26,9 @@
 &lt;h4 id=&quot;manipulando-dados-de-um-sitesimples&quot;&gt;Manipulando dados de um site simples&lt;/h4&gt;
 &lt;p&gt;Pra começar vamos criar nosso projeto bem rapidinho&lt;/p&gt;
 
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn init -y
-$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn init -y
+$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.&lt;/p&gt;
 
@@ -52,33 +51,29 @@ O desafio vai ser buscar o titulo do primeiro post desse nosso blog aqui.&lt;/p&
 
 &lt;p&gt;Pra fazer isso vamos criar nosso primeiro arquivo &lt;strong&gt;index.js&lt;/strong&gt; e já importar o &lt;em&gt;axios&lt;/em&gt; e o &lt;em&gt;cheerio&lt;/em&gt; nele&lt;/p&gt;
 
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;const axios = require(&amp;#39;axios&amp;#39;)
-const cheerio = require(&amp;#39;cheerio&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const axios = require('axios')
+const cheerio = require('cheerio')
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:&lt;/p&gt;
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;const webscraping = async () =&amp;gt; {
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const webscraping = async () =&amp;gt; {
 
-  const { data } = await axios.get(&amp;#39;https://pedroentringer.dev&amp;#39;)
+  const { data } = await axios.get('https://pedroentringer.dev')
 
   const $ = cheerio.load(data)
 
-  const posts = $(&amp;#39;.post-title a&amp;#39;)
+  const posts = $('.post-title a')
 
   const firstPost = posts.first()
 
   console.log(firstPost.text())
 
 }
-webscraping()&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+webscraping()
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;E o resultado disso será:&lt;/p&gt;
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;Manipulando dados de um site com Web Scraping&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;Manipulando dados de um site com Web Scraping
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Simples né? Agora vamos complicar um pouco mais.&lt;/p&gt;
 
@@ -88,16 +83,14 @@ webscraping()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.&lt;/p&gt;
 
 &lt;p&gt;Vamos lá, importando todas as libs:&lt;/p&gt;
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;import cheerio from &amp;#39;cheerio&amp;#39;
-import parseTable from &amp;#39;@pedroentringer/cheerio-table-parser&amp;#39;
-import puppeteer from &amp;#39;puppeteer&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;import cheerio from 'cheerio'
+import parseTable from '@pedroentringer/cheerio-table-parser'
+import puppeteer from 'puppeteer'
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Repare que substituimos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e &lt;strong&gt;daaaale&lt;/strong&gt;.&lt;/p&gt;
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;//Com o puppeteer eu chamo um navegador
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;//Com o puppeteer eu chamo um navegador
 const browser = await puppeteer.launch({
   headless: true //Aqui eu defino se quero que ele apareça ou não =&amp;gt; true (não aparece) | false (aparece)
 })
@@ -108,16 +101,16 @@ try {
   const page = await browser.newPage()
 
   //Acesso a pagina de login do painel
-  await page.goto(&amp;#39;meu_site/admin&amp;#39;)
+  await page.goto('meu_site/admin')
 
   //Insiro meu email no input de login
-  await page.type(&amp;#39;input[id=username]&amp;#39;, &amp;#39;oi@pedroentringer.dev&amp;#39;)
+  await page.type('input[id=username]', 'oi@pedroentringer.dev')
 
   //Insiro minha senha no input do login
-  await page.type(&amp;#39;input[id=login]&amp;#39;, &amp;#39;minha_senha&amp;#39;)
+  await page.type('input[id=login]', 'minha_senha')
 
   //Clico no botão de Entrar
-  await page.click(&amp;#39;input[type=submit]&amp;#39;)
+  await page.click('input[type=submit]')
 
   /**
    *  Agora eu preciso aguardar o site carregar
@@ -128,13 +121,13 @@ try {
    *  
    *  Assim que ele aparecer eu clico nele
    */
-  await page.waitForSelector(&amp;#39;#grid_tab_reviewed_products&amp;#39;, { visible: true, timeout: 0 })
-  await page.click(&amp;#39;#grid_tab_reviewed_products&amp;#39;)
+  await page.waitForSelector('#grid_tab_reviewed_products', { visible: true, timeout: 0 })
+  await page.click('#grid_tab_reviewed_products')
 
   /**
    * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
    */
-  await page.waitForSelector(&amp;#39;#productsReviewedGrid_table&amp;#39;, { visible: true, timeout: 0 })
+  await page.waitForSelector('#productsReviewedGrid_table', { visible: true, timeout: 0 })
 
   /**
    * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
@@ -152,55 +145,54 @@ try {
   parseTable($)
 
   //converto a tabela para JSON
-  const table = $(&amp;#39;#productsReviewedGrid_table&amp;#39;).parseTable()
+  const table = $('#productsReviewedGrid_table').parseTable()
 
   console.log(table)
 
 } catch (err) {
   await browser.close()
   console.error(err)
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;O mais legal é o resultado super fácil de manipular, veja:&lt;/p&gt;
 
-&lt;div&gt;
-  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
   {
-    nome: &amp;#39;Camiseta Infantil Ac/Dc Preta&amp;#39;,
-    preco: &amp;#39;R$ 42,90&amp;#39;,
+    nome: 'Camiseta Infantil Ac/Dc Preta',
+    preco: 'R$ 42,90',
     visitas: 185
   },
   {
-    nome: &amp;#39;Body Beatles Yellow Submarine Manga Curta Branco&amp;#39;,
-    preco: &amp;#39;R$ 39,90&amp;#39;,
+    nome: 'Body Beatles Yellow Submarine Manga Curta Branco',
+    preco: 'R$ 39,90',
     visitas: 178
   },
   {
-    nome: &amp;#39;Body Iron Maiden Manga Curta Preto Algodão&amp;#39;,
-    preco: &amp;#39;R$ 39,90&amp;#39;,
+    nome: 'Body Iron Maiden Manga Curta Preto Algodão',
+    preco: 'R$ 39,90',
     visitas: 170
   },
   {
-    nome: &amp;#39;Body Manga Curta Chega De Nana Neném Preto&amp;#39;,
-    preco: &amp;#39;R$ 39,90&amp;#39;,
+    nome: 'Body Manga Curta Chega De Nana Neném Preto',
+    preco: 'R$ 39,90',
     visitas: 144
   },
   {
-    nome: &amp;#39;Body Ac/Dc Manga Curta Preto&amp;#39;,
-    preco: &amp;#39;R$ 39,90&amp;#39;,
+    nome: 'Body Ac/Dc Manga Curta Preto',
+    preco: 'R$ 39,90',
     visitas: 141
   }
-]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+]
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 Apr 2020 12:30:00 -0300</pubDate>
-        <link>https://pedroentringer.dev//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
-        <guid isPermaLink="true">https://pedroentringer.dev//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
+        <link>http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
+        <guid isPermaLink="true">http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
         
         
         <category>Nodejs</category>

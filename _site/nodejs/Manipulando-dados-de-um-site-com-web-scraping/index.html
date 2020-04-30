@@ -43,7 +43,7 @@
         </header>
 
 <!--         <header class="post-header">
-            <a id="blog-logo" href="https://pedroentringer.dev">
+            <a id="blog-logo" href="http://localhost:4000">
                 
                     <span class="blog-title">Pedro Entringer</span>
                 
@@ -75,10 +75,9 @@
 <h4 id="manipulando-dados-de-um-sitesimples">Manipulando dados de um site simples</h4>
 <p>Pra começar vamos criar nosso projeto bem rapidinho</p>
 
-<div>
-  <pre data-line=""><code class="language-bash">$ yarn init -y
-$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser</code></pre>
-</div>
+<pre><code class="language-bash">$ yarn init -y
+$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser
+</code></pre>
 
 <p>Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.</p>
 
@@ -101,33 +100,29 @@ O desafio vai ser buscar o titulo do primeiro post desse nosso blog aqui.</p>
 
 <p>Pra fazer isso vamos criar nosso primeiro arquivo <strong>index.js</strong> e já importar o <em>axios</em> e o <em>cheerio</em> nele</p>
 
-<div>
-  <pre data-line=""><code class="language-javascript">const axios = require(&#39;axios&#39;)
-const cheerio = require(&#39;cheerio&#39;)</code></pre>
-</div>
-
+<pre><code class="language-javascript">const axios = require('axios')
+const cheerio = require('cheerio')
+</code></pre>
 <p>Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:</p>
-<div>
-  <pre data-line=""><code class="language-javascript">const webscraping = async () =&gt; {
+<pre><code class="language-javascript">const webscraping = async () =&gt; {
 
-  const { data } = await axios.get(&#39;https://pedroentringer.dev&#39;)
+  const { data } = await axios.get('https://pedroentringer.dev')
 
   const $ = cheerio.load(data)
 
-  const posts = $(&#39;.post-title a&#39;)
+  const posts = $('.post-title a')
 
   const firstPost = posts.first()
 
   console.log(firstPost.text())
 
 }
-webscraping()</code></pre>
-</div>
+webscraping()
+</code></pre>
 
 <p>E o resultado disso será:</p>
-<div>
-  <pre data-line=""><code class="language-javascript">Manipulando dados de um site com Web Scraping</code></pre>
-</div>
+<pre><code class="language-javascript">Manipulando dados de um site com Web Scraping
+</code></pre>
 
 <p>Simples né? Agora vamos complicar um pouco mais.</p>
 
@@ -137,16 +132,14 @@ webscraping()</code></pre>
 <p>Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.</p>
 
 <p>Vamos lá, importando todas as libs:</p>
-<div>
-  <pre data-line=""><code class="language-javascript">import cheerio from &#39;cheerio&#39;
-import parseTable from &#39;@pedroentringer/cheerio-table-parser&#39;
-import puppeteer from &#39;puppeteer&#39;</code></pre>
-</div>
+<pre><code class="language-javascript">import cheerio from 'cheerio'
+import parseTable from '@pedroentringer/cheerio-table-parser'
+import puppeteer from 'puppeteer'
+</code></pre>
 
 <p>Repare que substituimos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e <strong>daaaale</strong>.</p>
-<div>
-  <pre data-line=""><code class="language-javascript">//Com o puppeteer eu chamo um navegador
+<pre><code class="language-javascript">//Com o puppeteer eu chamo um navegador
 const browser = await puppeteer.launch({
   headless: true //Aqui eu defino se quero que ele apareça ou não =&gt; true (não aparece) | false (aparece)
 })
@@ -157,16 +150,16 @@ try {
   const page = await browser.newPage()
 
   //Acesso a pagina de login do painel
-  await page.goto(&#39;meu_site/admin&#39;)
+  await page.goto('meu_site/admin')
 
   //Insiro meu email no input de login
-  await page.type(&#39;input[id=username]&#39;, &#39;oi@pedroentringer.dev&#39;)
+  await page.type('input[id=username]', 'oi@pedroentringer.dev')
 
   //Insiro minha senha no input do login
-  await page.type(&#39;input[id=login]&#39;, &#39;minha_senha&#39;)
+  await page.type('input[id=login]', 'minha_senha')
 
   //Clico no botão de Entrar
-  await page.click(&#39;input[type=submit]&#39;)
+  await page.click('input[type=submit]')
 
   /**
    *  Agora eu preciso aguardar o site carregar
@@ -177,13 +170,13 @@ try {
    *  
    *  Assim que ele aparecer eu clico nele
    */
-  await page.waitForSelector(&#39;#grid_tab_reviewed_products&#39;, { visible: true, timeout: 0 })
-  await page.click(&#39;#grid_tab_reviewed_products&#39;)
+  await page.waitForSelector('#grid_tab_reviewed_products', { visible: true, timeout: 0 })
+  await page.click('#grid_tab_reviewed_products')
 
   /**
    * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
    */
-  await page.waitForSelector(&#39;#productsReviewedGrid_table&#39;, { visible: true, timeout: 0 })
+  await page.waitForSelector('#productsReviewedGrid_table', { visible: true, timeout: 0 })
 
   /**
    * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
@@ -201,47 +194,46 @@ try {
   parseTable($)
 
   //converto a tabela para JSON
-  const table = $(&#39;#productsReviewedGrid_table&#39;).parseTable()
+  const table = $('#productsReviewedGrid_table').parseTable()
 
   console.log(table)
 
 } catch (err) {
   await browser.close()
   console.error(err)
-}</code></pre>
-</div>
+}
+</code></pre>
 
 <p>O mais legal é o resultado super fácil de manipular, veja:</p>
 
-<div>
-  <pre data-line=""><code class="language-javascript">[
+<pre><code class="language-javascript">[
   {
-    nome: &#39;Camiseta Infantil Ac/Dc Preta&#39;,
-    preco: &#39;R$ 42,90&#39;,
+    nome: 'Camiseta Infantil Ac/Dc Preta',
+    preco: 'R$ 42,90',
     visitas: 185
   },
   {
-    nome: &#39;Body Beatles Yellow Submarine Manga Curta Branco&#39;,
-    preco: &#39;R$ 39,90&#39;,
+    nome: 'Body Beatles Yellow Submarine Manga Curta Branco',
+    preco: 'R$ 39,90',
     visitas: 178
   },
   {
-    nome: &#39;Body Iron Maiden Manga Curta Preto Algodão&#39;,
-    preco: &#39;R$ 39,90&#39;,
+    nome: 'Body Iron Maiden Manga Curta Preto Algodão',
+    preco: 'R$ 39,90',
     visitas: 170
   },
   {
-    nome: &#39;Body Manga Curta Chega De Nana Neném Preto&#39;,
-    preco: &#39;R$ 39,90&#39;,
+    nome: 'Body Manga Curta Chega De Nana Neném Preto',
+    preco: 'R$ 39,90',
     visitas: 144
   },
   {
-    nome: &#39;Body Ac/Dc Manga Curta Preto&#39;,
-    preco: &#39;R$ 39,90&#39;,
+    nome: 'Body Ac/Dc Manga Curta Preto',
+    preco: 'R$ 39,90',
     visitas: 141
   }
-]</code></pre>
-</div>
+]
+</code></pre>
 
 <p>Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe</p>
 

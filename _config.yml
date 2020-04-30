@@ -11,7 +11,7 @@ paginate: 15
 baseurl: /
 domain_name: 'https://pedroentringer.dev'
 google_analytics: 'UA-165073538-1'
-plugins: [jekyll-paginate, jekyll-prism-plugin]
+plugins: [jekyll-paginate]
 
 permalink: /:categories/:title/
 
