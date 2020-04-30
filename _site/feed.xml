@@ -5,9 +5,86 @@
     <description>Um tanto quanto curioso</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 12:46:55 -0300</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 12:46:55 -0300</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2020 13:48:07 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 13:48:07 -0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Trabalhando com Argumentos em Node.js</title>
+        <description>&lt;p&gt;Você já fez aquele programa que executa uma tarefa especifica e que funciona perfeitamente, dai de repente surge a necessidade de que esse programa receba um parâmetro ao iniciar.&lt;/p&gt;
+
+&lt;p&gt;Vamos supor que ele precise receber um CNPJ no inicio do programa, por algum motivo do destino, talvez pra buscar os dados em alguma API. O que importa agora pra gente é entender como usar os argumentos.&lt;/p&gt;
+
+&lt;p&gt;Naturalmente o Node.js já nos permite acessar argumentos no inicio do programa, então vamos supor que eu deseje passar dois parâmetros, sendo eles &lt;strong&gt;cnpj&lt;/strong&gt; e &lt;strong&gt;isActive&lt;/strong&gt;, eu faria dessa forma:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ node index 123 true&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;E lá no código, eu precisaria acessar esses parâmetros da seguinte maneira:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const cnpj = process.argv[2]
+const isActive = Boolean(process.argv[3])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Funciona&lt;/strong&gt;? Sim, funciona. Mas você percebe que tanto a forma de passar esses argumentos quanto a de recebe-los ficou estranha? Talvez não agora, mas no futuro sua equipe ou até outra equipe de trabalho saberão o que significa cada argumento desse ou terão que ficar lendo o código pra identificar?&lt;/p&gt;
+
+&lt;p&gt;Pois é, eu passei por isso a um tempo atrás, e por isso fiz a lib &lt;strong&gt;@pedroentringer/parser-command-line&lt;/strong&gt; que simplifica muito este processo.&lt;/p&gt;
+
+&lt;p&gt;Então vamos instalar esse trem:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn add @pedroentringer/parser-command-line&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sensacional, feito isso nós já podemos passar e receber argumento de uma forma muito mais simples.
+Usando o mesmo exemplo ficaria dessa forma:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ node index --cnpj=123 -isActive&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Já melhorou né? Agora veja como faremos pra acessar isso no código:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const parser = require('@pedroentringer/parser-command-line')
+const args = parser.parseArgs();
+
+console.log(args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Muito mais simples né? Agora veja como será o resultado disso:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  bin: &quot;node&quot;,
+  commands: [&quot;index&quot;],
+  flags: {
+    cnpj: 123,
+    isActive: true
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dessa forma fica muito melhor pra gente usar estes dados não é mesmo? E melhor ainda, você pode usar essa lib na web também, dessa forma é possível fazer o parse de um comando vindo de uma string também. Pense que ela veio via websocket do backend, ou qualquer outro cenário hehehe.&lt;/p&gt;
+
+&lt;p&gt;Usariamos dessa forma:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const parser = require('@pedroentringer/parser-command-line')
+const args = parser.parseString('meuPrograma show --message=&quot;Que legal, isso é uma mensagem&quot; --time=100 -isSuccess');
+
+console.log(args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;e o resultado desse parse será:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  bin: &quot;meuPrograma&quot;,
+  commands: [&quot;show&quot;],
+  flags: {
+    message: &quot;Que legal, isso é uma mensagem&quot;,
+    time: 100,
+    isSuccess: true
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 30 Apr 2020 10:00:00 -0300</pubDate>
+        <link>http://localhost:4000//nodejs/trabalhando-com-argumentos/</link>
+        <guid isPermaLink="true">http://localhost:4000//nodejs/trabalhando-com-argumentos/</guid>
+        
+        
+        <category>Nodejs</category>
+        
+      </item>
     
       <item>
         <title>Manipulando dados de um site com Web Scraping</title>
@@ -195,7 +272,7 @@ try {
 
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 30 Apr 2020 12:30:00 -0300</pubDate>
+        <pubDate>Wed, 29 Apr 2020 15:30:00 -0300</pubDate>
         <link>http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
         <guid isPermaLink="true">http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
         
