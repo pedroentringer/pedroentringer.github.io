@@ -5,8 +5,8 @@
     <description>Um tanto quanto curioso</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 13:48:07 -0300</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 13:48:07 -0300</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2020 13:50:35 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 13:50:35 -0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -78,8 +78,8 @@ console.log(args)
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 30 Apr 2020 10:00:00 -0300</pubDate>
-        <link>http://localhost:4000//nodejs/trabalhando-com-argumentos/</link>
-        <guid isPermaLink="true">http://localhost:4000//nodejs/trabalhando-com-argumentos/</guid>
+        <link>http://localhost:4000//nodejs/trabalhando-com-argumentos-em-nodejs/</link>
+        <guid isPermaLink="true">http://localhost:4000//nodejs/trabalhando-com-argumentos-em-nodejs/</guid>
         
         
         <category>Nodejs</category>
