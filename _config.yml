@@ -9,12 +9,12 @@ highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /
-domain_name: 'https://pedroentringer.github.io'
+domain_name: 'https://pedroentringer.dev'
 google_analytics: 'UA-XXXXXXXX-X'
 plugins: [jekyll-paginate]
 
 permalink: /:categories/:title/
 
 # Details for the RSS feed generator
-url:            'https://pedroentringer.github.io'
+url:            'https://pedroentringer.dev'
 author:         'Pedro Entringer'
