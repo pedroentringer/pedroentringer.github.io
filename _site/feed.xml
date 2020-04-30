@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>Um tanto quanto curioso</description>
-    <link>http://localhost:4000//</link>
-    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 11:40:21 -0300</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 11:40:21 -0300</lastBuildDate>
+    <link>https://pedroentringer.dev//</link>
+    <atom:link href="https://pedroentringer.dev//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 30 Apr 2020 11:50:26 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 11:50:26 -0300</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -199,8 +199,8 @@ try {
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 Apr 2020 12:30:00 -0300</pubDate>
-        <link>http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
-        <guid isPermaLink="true">http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
+        <link>https://pedroentringer.dev//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
+        <guid isPermaLink="true">https://pedroentringer.dev//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
         
         
         <category>Nodejs</category>
