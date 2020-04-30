@@ -4,16 +4,17 @@ meta_description: "Pedro Entringer | Developer"
 
 lang: pt-BR
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
+
 logo: false
 paginate: 15
-baseurl: 'https://http://pedroentringer.github.io/'
-domain_name: 'https://http://pedroentringer.github.io/'
+baseurl: /
+domain_name: 'https://pedroentringer.github.io'
 google_analytics: 'UA-XXXXXXXX-X'
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 
 permalink: /:categories/:title/
 
 # Details for the RSS feed generator
-url:            'https://http://pedroentringer.github.io/'
+url:            'https://pedroentringer.github.io'
 author:         'Pedro Entringer'

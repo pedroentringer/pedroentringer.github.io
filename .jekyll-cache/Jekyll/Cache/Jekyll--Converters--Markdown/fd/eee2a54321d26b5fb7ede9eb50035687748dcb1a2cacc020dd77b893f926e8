@@ -1,0 +1,148 @@
+I"><p>É impressionante a ideia de conseguir manipular os dados de um site de outra pessoa não é mesmo? Eu adoro isso, logo quando comecei a faculdade de programação fiquei intrigado por não ser a primeira coisa a aprender (que sonho).</p>
+
+<p>Mas vamos direto ao ponto, aqui vamos aplicar o Web Scraping em um site simples e em outro um pouco mais complexo. <strong>Let`s go to code</strong>.</p>
+
+<h4 id="bibliotecas-utilizadas">Bibliotecas utilizadas:</h4>
+<ul>
+  <li>Cheerio</li>
+  <li>@pedroentringer/cheerio-table-parser <strong>(Mágica kkk)</strong></li>
+  <li>Axios</li>
+  <li>Puppeteer</li>
+</ul>
+
+<h4 id="manipulando-dados-de-um-sitesimples">Manipulando dados de um site simples</h4>
+<p>Pra começar vamos criar nosso projeto bem rapidinho</p>
+
+<div>
+  <pre data-line=""><code class="language-bash">$ yarn init -y
+$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser</code></pre>
+</div>
+
+<p>Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.</p>
+
+<h5 id="axios">Axios</h5>
+<p>O Axios é muuuio usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
+Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe</p>
+
+<h5 id="cheerio">Cheerio</h5>
+<p>O Cheerio é uma lib que nos permite manipular a DOM do site com mais facilidade, muito similar com a forma do JQuery.</p>
+
+<h5 id="pedroentringercheerio-table-parser">@pedroentringer/cheerio-table-parser</h5>
+<p>Essa é uma lib que eu mesmo fiz pra resolver uma problema que eu tive recentemente. Ela basicamente recebe qualquer tabela em HTML e converte para JSON, assim fica mais fácil de manipular os dados né? hehehe</p>
+
+<h5 id="puppeteer">Puppeteer</h5>
+<p>O Puppeteer é incrivel, com ele você consegue mapear ações para que um “bot” replique no site usando um navegador, como se fosse uma pessoa de verdade, <strong>top né?</strong></p>
+
+<h5 id="lets-go-to-code">Let’s go to code</h5>
+<p>Depois que tudo tiver instalado certinho, bora começar de uma forma simples.
+O desafio vai ser buscar o titulo do primeiro post desse nosso blog aqui.</p>
+
+<p>Pra fazer isso vamos criar nosso primeiro arquivo <strong>index.js</strong> e já importar o <em>axios</em> e o <em>cheerio</em> nele</p>
+
+<div>
+  <pre data-line=""><code class="language-javascript">const axios = require(&#39;axios&#39;)
+const cheerio = require(&#39;cheerio&#39;)</code></pre>
+</div>
+
+<p>Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:</p>
+<div>
+  <pre data-line=""><code class="language-javascript">const webscraping = async () =&gt; {
+
+  const { data } = await axios.get(&#39;https://pedroentringer.dev&#39;)
+
+  const $ = cheerio.load(data)
+
+  const posts = $(&#39;.post-title a&#39;)
+
+  const firstPost = posts.first()
+
+  console.log(firstPost.text())
+
+  /**
+   * Resultado:
+   * Manipulando dados de um site com Web Scraping
+   */
+
+}
+webscraping()</code></pre>
+</div>
+
+<p>Simples né? Agora vamos complicar um pouco mais.</p>
+
+<h4 id="manipulando-dados-de-um-sitecom-autenticação-e-navegação">Manipulando dados de um site com autenticação e navegação</h4>
+<p>Agora imagine um cenário que você está fazendo um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.</p>
+
+<p>Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.</p>
+
+<p>Vamos lá, importando todas as libs:</p>
+<div>
+  <pre data-line=""><code class="language-javascript">import cheerio from &#39;cheerio&#39;
+import parseTable from &#39;@pedroentringer/cheerio-table-parser&#39;
+import puppeteer from &#39;puppeteer&#39;</code></pre>
+</div>
+
+<p>Repare que substituimos o axios pelo puppeteer.
+E agora é só abrir o navegador, acessar o site, e <strong>daaaale</strong>.</p>
+<div>
+  <pre data-line=""><code class="language-javascript">//Com o puppeteer eu chamo um navegador
+const browser = await puppeteer.launch({
+  headless: true //Aqui eu defino se quero que ele apareça ou não =&gt; true (não aparece) | false (aparece)
+})
+
+try {
+
+  //Crio uma nova aba no navegador
+  const page = await browser.newPage()
+
+  //Acesso a pagina de login do painel
+  await page.goto(&#39;meu_site/admin&#39;)
+
+  //Insiro meu email no input de login
+  await page.type(&#39;input[id=username]&#39;, &#39;oi@pedroentringer.dev&#39;)
+
+  //Insiro minha senha no input do login
+  await page.type(&#39;input[id=login]&#39;, &#39;minha_senha&#39;)
+
+  //Clico no botão de Entrar
+  await page.click(&#39;input[type=submit]&#39;)
+
+  /**
+   *  Agora eu preciso aguardar o site carregar
+   *  e o elemento com id #grid_tab_reviewed_products aparecer na tela
+   *  
+   *  No painel do Magento 1.9 esse elemento representa um botão que 
+   *  irá carregar na tela uma tabela com os 5 produtos mais visitados no site
+   *  
+   *  Assim que ele aparecer eu clico nele
+   */
+  await page.waitForSelector(&#39;#grid_tab_reviewed_products&#39;, { visible: true, timeout: 0 })
+  await page.click(&#39;#grid_tab_reviewed_products&#39;)
+
+  /**
+   * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
+   */
+  await page.waitForSelector(&#39;#productsReviewedGrid_table&#39;, { visible: true, timeout: 0 })
+
+  /**
+   * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
+   * Basta pegar o html da pagina e manipular com o cheerio
+   */
+  const html = await page.content()
+
+  //Lembre-se sempre de fechar o navegador kkk
+  await browser.close()
+
+  //Importo o HTML do site atual para o cheerio
+  const $ = cheerio.load(html)
+  
+  //Ativo o modulo de converter a tabela
+  parseTable($)
+
+  //converto a tabela para JSON
+  const table = $(&#39;#productsReviewedGrid_table&#39;).parseTable()
+} catch (err) {
+  await browser.close()
+  console.error(err)
+}</code></pre>
+</div>
+:ET

@@ -3,67 +3,204 @@
   <channel>
     <title></title>
     <description>Um tanto quanto curioso</description>
-    <link>http://localhost:4000https://http://pedroentringer.github.io//</link>
-    <atom:link href="http://localhost:4000https://http://pedroentringer.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 29 Apr 2020 18:32:50 -0300</pubDate>
-    <lastBuildDate>Wed, 29 Apr 2020 18:32:50 -0300</lastBuildDate>
+    <link>http://localhost:4000//</link>
+    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 30 Apr 2020 11:25:09 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 11:25:09 -0300</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
         <title>Manipulando dados de um site com Web Scraping</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+        <description>&lt;p&gt;É impressionante a ideia de conseguir manipular os dados de um site de outra pessoa não é mesmo? Eu adoro isso, logo quando comecei a faculdade de programação fiquei intrigado por não ser a primeira coisa a aprender (que sonho).&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;Mas vamos direto ao ponto, aqui vamos aplicar o Web Scraping em um site simples e em outro um pouco mais complexo. &lt;strong&gt;Let`s go to code&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cheerio&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;cheerio&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parseTable&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./parseTable&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;puppeteer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;puppeteer&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;h4 id=&quot;bibliotecas-utilizadas&quot;&gt;Bibliotecas utilizadas:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cheerio&lt;/li&gt;
+  &lt;li&gt;@pedroentringer/cheerio-table-parser &lt;strong&gt;(Mágica kkk)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Axios&lt;/li&gt;
+  &lt;li&gt;Puppeteer&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;h4 id=&quot;manipulando-dados-de-um-sitesimples&quot;&gt;Manipulando dados de um site simples&lt;/h4&gt;
+&lt;p&gt;Pra começar vamos criar nosso projeto bem rapidinho&lt;/p&gt;
 
-&lt;span class=&quot;cm&quot;&gt;/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn init -y
+$ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;span class=&quot;cm&quot;&gt;/** @type {import('@adonisjs/framework/src/Hash')} */&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Hash&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.&lt;/p&gt;
 
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Model&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boot&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;h5 id=&quot;axios&quot;&gt;Axios&lt;/h5&gt;
+&lt;p&gt;O Axios é muuuio usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
+Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe&lt;/p&gt;
 
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;beforeCreate&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;UserHook.sendNewUserEmail&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;h5 id=&quot;cheerio&quot;&gt;Cheerio&lt;/h5&gt;
+&lt;p&gt;O Cheerio é uma lib que nos permite manipular a DOM do site com mais facilidade, muito similar com a forma do JQuery.&lt;/p&gt;
 
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addHook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;beforeSave&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dirty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;userInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;h5 id=&quot;pedroentringercheerio-table-parser&quot;&gt;@pedroentringer/cheerio-table-parser&lt;/h5&gt;
+&lt;p&gt;Essa é uma lib que eu mesmo fiz pra resolver uma problema que eu tive recentemente. Ela basicamente recebe qualquer tabela em HTML e converte para JSON, assim fica mais fácil de manipular os dados né? hehehe&lt;/p&gt;
 
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;h5 id=&quot;puppeteer&quot;&gt;Puppeteer&lt;/h5&gt;
+&lt;p&gt;O Puppeteer é incrivel, com ele você consegue mapear ações para que um “bot” replique no site usando um navegador, como se fosse uma pessoa de verdade, &lt;strong&gt;top né?&lt;/strong&gt;&lt;/p&gt;
 
-  &lt;span class=&quot;nx&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hasMany&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;App/Models/Token&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;h5 id=&quot;lets-go-to-code&quot;&gt;Let’s go to code&lt;/h5&gt;
+&lt;p&gt;Depois que tudo tiver instalado certinho, bora começar de uma forma simples.
+O desafio vai ser buscar o titulo do primeiro post desse nosso blog aqui.&lt;/p&gt;
 
-  &lt;span class=&quot;nx&quot;&gt;branches&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;belongsToMany&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;App/Models/Branch&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pivotTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;user_branches&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;p&gt;Pra fazer isso vamos criar nosso primeiro arquivo &lt;strong&gt;index.js&lt;/strong&gt; e já importar o &lt;em&gt;axios&lt;/em&gt; e o &lt;em&gt;cheerio&lt;/em&gt; nele&lt;/p&gt;
 
-  &lt;span class=&quot;nx&quot;&gt;accessGroups&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;belongsToMany&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;App/Models/GroupAccess&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pivotTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;user_group_accesses&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pivotModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;App/Models/UserGroupAccess&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;const axios = require(&amp;#39;axios&amp;#39;)
+const cheerio = require(&amp;#39;cheerio&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;p&gt;Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;const webscraping = async () =&amp;gt; {
 
-&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+  const { data } = await axios.get(&amp;#39;https://pedroentringer.dev&amp;#39;)
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+  const $ = cheerio.load(data)
 
+  const posts = $(&amp;#39;.post-title a&amp;#39;)
+
+  const firstPost = posts.first()
+
+  console.log(firstPost.text())
+
+}
+webscraping()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;E o resultado disso será:&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;Manipulando dados de um site com Web Scraping&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Simples né? Agora vamos complicar um pouco mais.&lt;/p&gt;
+
+&lt;h4 id=&quot;manipulando-dados-de-um-sitecom-autenticação-e-navegação&quot;&gt;Manipulando dados de um site com autenticação e navegação&lt;/h4&gt;
+&lt;p&gt;Agora imagine um cenário que você está fazendo um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.&lt;/p&gt;
+
+&lt;p&gt;Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.&lt;/p&gt;
+
+&lt;p&gt;Vamos lá, importando todas as libs:&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;import cheerio from &amp;#39;cheerio&amp;#39;
+import parseTable from &amp;#39;@pedroentringer/cheerio-table-parser&amp;#39;
+import puppeteer from &amp;#39;puppeteer&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Repare que substituimos o axios pelo puppeteer.
+E agora é só abrir o navegador, acessar o site, e &lt;strong&gt;daaaale&lt;/strong&gt;.&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;//Com o puppeteer eu chamo um navegador
+const browser = await puppeteer.launch({
+  headless: true //Aqui eu defino se quero que ele apareça ou não =&amp;gt; true (não aparece) | false (aparece)
+})
+
+try {
+
+  //Crio uma nova aba no navegador
+  const page = await browser.newPage()
+
+  //Acesso a pagina de login do painel
+  await page.goto(&amp;#39;meu_site/admin&amp;#39;)
+
+  //Insiro meu email no input de login
+  await page.type(&amp;#39;input[id=username]&amp;#39;, &amp;#39;oi@pedroentringer.dev&amp;#39;)
+
+  //Insiro minha senha no input do login
+  await page.type(&amp;#39;input[id=login]&amp;#39;, &amp;#39;minha_senha&amp;#39;)
+
+  //Clico no botão de Entrar
+  await page.click(&amp;#39;input[type=submit]&amp;#39;)
+
+  /**
+   *  Agora eu preciso aguardar o site carregar
+   *  e o elemento com id #grid_tab_reviewed_products aparecer na tela
+   *  
+   *  No painel do Magento 1.9 esse elemento representa um botão que 
+   *  irá carregar na tela uma tabela com os 5 produtos mais visitados no site
+   *  
+   *  Assim que ele aparecer eu clico nele
+   */
+  await page.waitForSelector(&amp;#39;#grid_tab_reviewed_products&amp;#39;, { visible: true, timeout: 0 })
+  await page.click(&amp;#39;#grid_tab_reviewed_products&amp;#39;)
+
+  /**
+   * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
+   */
+  await page.waitForSelector(&amp;#39;#productsReviewedGrid_table&amp;#39;, { visible: true, timeout: 0 })
+
+  /**
+   * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
+   * Basta pegar o html da pagina e manipular com o cheerio
+   */
+  const html = await page.content()
+
+  //Lembre-se sempre de fechar o navegador kkk
+  await browser.close()
+
+  //Importo o HTML do site atual para o cheerio
+  const $ = cheerio.load(html)
+  
+  //Ativo o modulo de converter a tabela
+  parseTable($)
+
+  //converto a tabela para JSON
+  const table = $(&amp;#39;#productsReviewedGrid_table&amp;#39;).parseTable()
+
+  console.log(table)
+
+} catch (err) {
+  await browser.close()
+  console.error(err)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;O mais legal é o resultado super fácil de manipular, veja:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre data-line=&quot;&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+  {
+    nome: &amp;#39;Camiseta Infantil Ac/Dc Preta&amp;#39;,
+    preco: &amp;#39;R$ 42,90&amp;#39;,
+    visitas: 185
+  },
+  {
+    nome: &amp;#39;Body Beatles Yellow Submarine Manga Curta Branco&amp;#39;,
+    preco: &amp;#39;R$ 39,90&amp;#39;,
+    visitas: 178
+  },
+  {
+    nome: &amp;#39;Body Iron Maiden Manga Curta Preto Algodão&amp;#39;,
+    preco: &amp;#39;R$ 39,90&amp;#39;,
+    visitas: 170
+  },
+  {
+    nome: &amp;#39;Body Manga Curta Chega De Nana Neném Preto&amp;#39;,
+    preco: &amp;#39;R$ 39,90&amp;#39;,
+    visitas: 144
+  },
+  {
+    nome: &amp;#39;Body Ac/Dc Manga Curta Preto&amp;#39;,
+    preco: &amp;#39;R$ 39,90&amp;#39;,
+    visitas: 141
+  }
+]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 29 Apr 2020 12:30:00 -0300</pubDate>
-        <link>http://localhost:4000https://http://pedroentringer.github.io//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
-        <guid isPermaLink="true">http://localhost:4000https://http://pedroentringer.github.io//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
+        <link>http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</link>
+        <guid isPermaLink="true">http://localhost:4000//nodejs/manipulando-dados-de-um-site-com-web-scraping/</guid>
         
         
         <category>Nodejs</category>
