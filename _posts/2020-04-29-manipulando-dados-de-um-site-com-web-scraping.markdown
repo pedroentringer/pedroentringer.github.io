@@ -26,7 +26,7 @@ Este processo pode demorar alguns minutinhos para terminar, enquanto isso vamos 
 
 ##### Axios
 O Axios é muuuito usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
-Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe
+Por aqui vamos usar ele para buscar a estrutura do meu próprio blog hehehe
 
 ##### Cheerio
 O Cheerio é uma lib que nos permite manipular a DOM do site com mais facilidade, muito similar com a forma do JQuery.
@@ -35,7 +35,7 @@ O Cheerio é uma lib que nos permite manipular a DOM do site com mais facilidade
 Essa é uma lib que eu mesmo fiz pra resolver uma problema que eu tive recentemente. Ela basicamente recebe qualquer tabela em HTML e converte para JSON, assim fica mais fácil de manipular os dados né? hehehe
 
 ##### Puppeteer
-O Puppeteer é incrivel, com ele você consegue mapear ações para que um "bot" replique no site usando um navegador, como se fosse uma pessoa de verdade, **top né?**
+O Puppeteer é incrível, com ele você consegue mapear ações para que um "bot" replique no site usando um navegador, como se fosse uma pessoa de verdade, **top né?**
 
 ##### Let's go to code
 Depois que tudo tiver instalado certinho, bora começar de uma forma simples.
@@ -75,7 +75,7 @@ E o resultado disso será:
 Simples né? Agora vamos complicar um pouco mais.
 
 #### Manipulando dados de um site com autenticação e navegação
-Agora imagine um cenário que você precise fazer um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site. 
+Agora imagine um cenário que você precise fazer um projeto freelancer pra uma empresa que possui um e-commerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site. 
 
 Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.
 
@@ -85,7 +85,7 @@ import parseTable from '@pedroentringer/cheerio-table-parser'
 import puppeteer from 'puppeteer'
 </code></pre>
 
-Repare que substituimos o axios pelo puppeteer.
+Repare que substituímos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e **daaaale**.
 <pre><code class="language-javascript">//Com o puppeteer eu chamo um navegador
 const browser = await puppeteer.launch({
@@ -183,6 +183,6 @@ O mais legal é o resultado super fácil de manipular, veja:
 ]
 </code></pre>
 
-Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe
+Super bacana né? E você pode aplicar isso em diversas outras funcionalidades. Aqui não existem limites. hehehe
 
 **Divirta-se!**

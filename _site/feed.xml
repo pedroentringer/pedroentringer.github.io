@@ -5,17 +5,17 @@
     <description>Um tanto quanto curioso</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 30 Apr 2020 14:58:45 -0300</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2020 14:58:45 -0300</lastBuildDate>
+    <pubDate>Thu, 30 Apr 2020 15:16:26 -0300</pubDate>
+    <lastBuildDate>Thu, 30 Apr 2020 15:16:26 -0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Trabalhando com Argumentos em Node.js</title>
-        <description>&lt;p&gt;Você já fez aquele programa que executa uma tarefa especifica e que funciona perfeitamente, dai de repente surge a necessidade de que esse programa receba um parâmetro ao iniciar.&lt;/p&gt;
+        <description>&lt;p&gt;Você já fez aquele programa que executa uma tarefa específica e que funciona perfeitamente, dai de repente surge a necessidade de que esse programa receba um parâmetro ao iniciar? &lt;strong&gt;Provavelmente sim&lt;/strong&gt;, mas caso ainda não tenha passado por isso, vale a pena aprender pois uma hora você irá acontecer.&lt;/p&gt;
 
-&lt;p&gt;Vamos supor que ele precise receber um CNPJ no inicio do programa, por algum motivo do destino, talvez pra buscar os dados em alguma API. O que importa agora pra gente é entender como usar os argumentos.&lt;/p&gt;
+&lt;p&gt;Vamos supor que ele precise receber um CNPJ no início do programa, por algum motivo do destino, talvez pra buscar os dados em alguma API. O que importa agora pra gente é entender como usar os argumentos.&lt;/p&gt;
 
-&lt;p&gt;Naturalmente o Node.js já nos permite acessar argumentos no inicio do programa, então vamos supor que eu deseje passar dois parâmetros, sendo eles &lt;strong&gt;cnpj&lt;/strong&gt; e &lt;strong&gt;isActive&lt;/strong&gt;, eu faria dessa forma:&lt;/p&gt;
+&lt;p&gt;Naturalmente o Node.js nos permite acessar argumentos no início do programa, então vamos supor que eu deseje passar dois parâmetros, sendo eles &lt;strong&gt;cnpj&lt;/strong&gt; e &lt;strong&gt;isActive&lt;/strong&gt;, eu faria dessa forma:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ node index 123 true&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;E lá no código, eu precisaria acessar esses parâmetros da seguinte maneira:&lt;/p&gt;
@@ -23,25 +23,25 @@
 const isActive = Boolean(process.argv[3])
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Funciona&lt;/strong&gt;? Sim, funciona. Mas você percebe que tanto a forma de passar esses argumentos quanto a de recebe-los ficou estranha? Talvez não agora, mas no futuro sua equipe ou até outra equipe de trabalho saberão o que significa cada argumento desse ou terão que ficar lendo o código pra identificar?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Funciona&lt;/strong&gt;? Sim, funciona. Mas você percebe que tanto a forma de passar esses argumentos quanto a de recebe-los ficou estranha? Talvez não agora, mas no futuro certamente irá ser. Imagine uma outra equipe dando manutenção nesse código dois anos depois.&lt;/p&gt;
 
-&lt;p&gt;Pois é, eu passei por isso a um tempo atrás, e por isso fiz a lib &lt;strong&gt;@pedroentringer/parser-command-line&lt;/strong&gt; que simplifica muito este processo.&lt;/p&gt;
+&lt;p&gt;Pois é, eu passei por isso a um tempo atrás, e por este motivo fiz a lib &lt;strong&gt;@pedroentringer/parser-command-line&lt;/strong&gt; que simplifica muito este processo.&lt;/p&gt;
 
 &lt;p&gt;Então vamos instalar esse trem:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ yarn add @pedroentringer/parser-command-line&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Sensacional, feito isso nós já podemos passar e receber argumento de uma forma muito mais simples.
+&lt;p&gt;Sensacional, feito isso já podemos passar e receber argumento de uma forma muito mais simples.
 Usando o mesmo exemplo ficaria dessa forma:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ node index --cnpj=123 -isActive&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Já melhorou né? Agora veja como faremos pra acessar isso no código:&lt;/p&gt;
+&lt;p&gt;Melhorou né? Agora veja como faremos pra acessar isso no código:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const parser = require('@pedroentringer/parser-command-line')
 const args = parser.parseArgs();
 
 console.log(args)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Muito mais simples né? Agora veja como será o resultado disso:&lt;/p&gt;
+&lt;p&gt;Repare que tanto a chamada do script quanto sua escrita ficaram muito mais simples né? Eis o resultado disso:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
   bin: &quot;node&quot;,
   commands: [&quot;index&quot;],
@@ -52,9 +52,9 @@ console.log(args)
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Dessa forma fica muito melhor pra gente usar estes dados não é mesmo? E melhor ainda, você pode usar essa lib na web também, dessa forma é possível fazer o parse de um comando vindo de uma string também. Pense que ela veio via websocket do backend, ou qualquer outro cenário hehehe.&lt;/p&gt;
+&lt;p&gt;Dessa forma fica muito melhor pra gente usar estes dados não é mesmo? E melhor ainda, você pode usar essa lib na web também, dessa forma é possível fazer o parse de um comando vindo de uma string. Pense que a ordem veio via websocket do backend, ou qualquer outro cenário hehehe.&lt;/p&gt;
 
-&lt;p&gt;Usariamos dessa forma:&lt;/p&gt;
+&lt;p&gt;Usaríamos assim:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const parser = require('@pedroentringer/parser-command-line')
 const args = parser.parseString('meuPrograma show --message=&quot;Que legal, isso é uma mensagem&quot; --time=100 -isSuccess');
 
@@ -73,7 +73,7 @@ console.log(args)
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
+&lt;p&gt;Super bacana né? E você pode aplicar isso em diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
@@ -111,7 +111,7 @@ $ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser
 
 &lt;h5 id=&quot;axios&quot;&gt;Axios&lt;/h5&gt;
 &lt;p&gt;O Axios é muuuito usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
-Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe&lt;/p&gt;
+Por aqui vamos usar ele para buscar a estrutura do meu próprio blog hehehe&lt;/p&gt;
 
 &lt;h5 id=&quot;cheerio&quot;&gt;Cheerio&lt;/h5&gt;
 &lt;p&gt;O Cheerio é uma lib que nos permite manipular a DOM do site com mais facilidade, muito similar com a forma do JQuery.&lt;/p&gt;
@@ -120,7 +120,7 @@ Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe&lt;/p
 &lt;p&gt;Essa é uma lib que eu mesmo fiz pra resolver uma problema que eu tive recentemente. Ela basicamente recebe qualquer tabela em HTML e converte para JSON, assim fica mais fácil de manipular os dados né? hehehe&lt;/p&gt;
 
 &lt;h5 id=&quot;puppeteer&quot;&gt;Puppeteer&lt;/h5&gt;
-&lt;p&gt;O Puppeteer é incrivel, com ele você consegue mapear ações para que um “bot” replique no site usando um navegador, como se fosse uma pessoa de verdade, &lt;strong&gt;top né?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;O Puppeteer é incrível, com ele você consegue mapear ações para que um “bot” replique no site usando um navegador, como se fosse uma pessoa de verdade, &lt;strong&gt;top né?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;lets-go-to-code&quot;&gt;Let’s go to code&lt;/h5&gt;
 &lt;p&gt;Depois que tudo tiver instalado certinho, bora começar de uma forma simples.
@@ -160,7 +160,7 @@ webscraping()
 &lt;p&gt;Simples né? Agora vamos complicar um pouco mais.&lt;/p&gt;
 
 &lt;h4 id=&quot;manipulando-dados-de-um-sitecom-autenticação-e-navegação&quot;&gt;Manipulando dados de um site com autenticação e navegação&lt;/h4&gt;
-&lt;p&gt;Agora imagine um cenário que você precise fazer um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.&lt;/p&gt;
+&lt;p&gt;Agora imagine um cenário que você precise fazer um projeto freelancer pra uma empresa que possui um e-commerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.&lt;/p&gt;
 
 &lt;p&gt;Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.&lt;/p&gt;
 
@@ -170,7 +170,7 @@ import parseTable from '@pedroentringer/cheerio-table-parser'
 import puppeteer from 'puppeteer'
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Repare que substituimos o axios pelo puppeteer.
+&lt;p&gt;Repare que substituímos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e &lt;strong&gt;daaaale&lt;/strong&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;//Com o puppeteer eu chamo um navegador
 const browser = await puppeteer.launch({
@@ -268,7 +268,7 @@ try {
 ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Super bacana né? E você pode aplicar isso para diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
+&lt;p&gt;Super bacana né? E você pode aplicar isso em diversas outras funcionalidades. Aqui não existem limites. hehehe&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Divirta-se!&lt;/strong&gt;&lt;/p&gt;
 </description>
