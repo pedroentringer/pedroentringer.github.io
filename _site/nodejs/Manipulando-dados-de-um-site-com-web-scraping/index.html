@@ -62,10 +62,10 @@
 $ yarn add cheerio axios puppeteer @pedroentringer/cheerio-table-parser
 </code></pre>
 
-<p>Isso pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.</p>
+<p>Este processo pode demorar alguns minutinhos para terminar, enquanto isso vamos falar um pouco sobre cada uma dessas dependências.</p>
 
 <h5 id="axios">Axios</h5>
-<p>O Axios é muuuio usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
+<p>O Axios é muuuito usado para fazer requisições HTTP, quando você quer buscar ou enviar dados para algum site.
 Por aqui vamos usar ele para buscar a estrutura do meu proprio blog hehehe</p>
 
 <h5 id="cheerio">Cheerio</h5>
@@ -89,14 +89,19 @@ const cheerio = require('cheerio')
 <p>Show, feito isso já podemos usar o axios para fazer uma busca na home do nosso blog, e vamos fazer isso da seguinte forma:</p>
 <pre><code class="language-javascript">const webscraping = async () =&gt; {
 
+  //Busco os dados no site, e aqui vou receber todo o HTML dele
   const { data } = await axios.get('https://pedroentringer.dev')
 
+  //Importo isso para o cheerio
   const $ = cheerio.load(data)
 
+  //Busco todos os elementos de link "a" que sejam filho de elementos que possuem a classe "post-title" 
   const posts = $('.post-title a')
 
+  //Pego apenas o primeiro elemento
   const firstPost = posts.first()
 
+  //E taraaaam, exibo o texto que tem nesse elemento
   console.log(firstPost.text())
 
 }
@@ -110,11 +115,11 @@ webscraping()
 <p>Simples né? Agora vamos complicar um pouco mais.</p>
 
 <h4 id="manipulando-dados-de-um-sitecom-autenticação-e-navegação">Manipulando dados de um site com autenticação e navegação</h4>
-<p>Agora imagine um cenário que você está fazendo um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.</p>
+<p>Agora imagine um cenário que você precise fazer um projeto freelancer pra uma empresa que possui um ecommerce em Magento 1.9, eles precisam visualizar facilmente os 5 pedidos mais populares do site.</p>
 
 <p>Nesse caso, a cada pagina do painel é gerado um token diferente, e seria bem chato ficar adivinhando como ele gera esse token para que possamos reproduzir da mesma forma, né? Maaas, para resolver isso nós podemos acessar esses dados usando um navegador, e é ai que entra o puppeteer.</p>
 
-<p>Vamos lá, importando todas as libs:</p>
+<p>Vamos lá, importaremos todas as libs:</p>
 <pre><code class="language-javascript">import cheerio from 'cheerio'
 import parseTable from '@pedroentringer/cheerio-table-parser'
 import puppeteer from 'puppeteer'
