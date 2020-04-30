@@ -14,7 +14,7 @@ post_class: post-template
 <main class="content" role="main">
 
     <article class="post">
-
+        
         <header class="post-header">
             <section class="post-meta">
                 {{site.author}}
@@ -25,25 +25,6 @@ post_class: post-template
             </section>
             <h1 class="post-title">{{ page.title }}</h1>
         </header>
-
-<!--         <header class="post-header">
-            <a id="blog-logo" href="{{site.url}}">
-                {% if site.logo %}
-                    <img src="{{site.logo}}" alt="{{ site.name }}" />
-                {% else %}
-                    <span class="blog-title">{{ site.name }}</span>
-                {%endif%}
-            </a>
-        </header> -->
-
-        <!-- <span class="post-meta">
-            <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
-            {% if page.categories.size > 0 %}
-                {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
-            {% endif %}
-        </span> -->
-
-        <!-- <h1 class="post-title">{{ page.title }}</h1> -->
 
         <section class="post-content">
             {{content}}
@@ -62,7 +43,7 @@ post_class: post-template
 
         <footer class="post-footer">
             <!-- If we want to display author's name and bio -->
-            {% if site.author %}
+            {% if site.author %} a{{disqus}}
                 <figure class="author-image">
                     <a class="img" href="{{ site.baseurl }}" style="background-image: url(/assets/images/profile.png)">
                     <span class="hidden">{{site.author}}'s Picture</span></a>
