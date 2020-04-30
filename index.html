@@ -2,6 +2,7 @@
 layout: default
 title: Home
 cover: false
+projetos: 'projetos/'
 ---
 
 <header class="main-header {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
@@ -18,7 +19,6 @@ cover: false
             <h1 class="page-title">{{ site.name }}</h1>
             <h2 class="page-description">
                 {% if site.description %} {{ site.description }}. {% endif %}
-                {% if page.about %} <a href='{{ site.baseurl }}{{ page.about }}'> <br />Sobre mim </a> {% endif %}
             </h2>
 
             <div class="home-buttons">
@@ -36,11 +36,20 @@ cover: false
 <main id="content" class="content" role="main">
 
     <article class="post">
-        <div class="about">
+        <div class="splash about">
             <div class="home-profile" style="background-image: url(/assets/images/profile.png)" ></div>
             <div class="content">
                 <span class="title">Sobre mim</span>
                 <span class="description">Graduado em Sistemas de Informação, apaixonado por novas tecnologias. Gosta de criar sistemas funcionais que resolvem problemas reais.</span>
+            </div>
+        </div>
+        <div class="splash projects">
+            <div class="content">
+                <span class="title">Meus projetos</span>
+                <span class="description">Dê uma olhada nos projetos que já desenvolvi, espero que goste.</span>
+            </div>
+            <div class="btn">
+                <a href='{{ site.baseurl }}{{ page.projetos }}'>Ver Projetos</a>
             </div>
         </div>
     </article>

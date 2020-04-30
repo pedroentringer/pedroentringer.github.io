@@ -1,0 +1,14 @@
+[
+  {
+    "title": "iConex Entrega - Aplicativo Mobile",
+    "description": "Aplicativo Offline First, armazena todos os dados no aparelho, e faz a sincronização em background via API REST. Controla toda a unidade operacional da iConex Logística.",
+    "techs": ["Node.js", "React Native"],
+    "image": "mobile-iconex-entrega.png"
+  },
+  {
+    "title": "iConex Cliente",
+    "description": "Portal Web que gerencia todos os pedidos de um determinado cliente expedidor. Garante total visibilidade com uma grande simplicidade em todos os processos.",
+    "techs": ["Node.js", "HTML5", "CSS3", "jQuery"],
+    "image": "iconex-portal-do-cliente.png"
+  }
+]

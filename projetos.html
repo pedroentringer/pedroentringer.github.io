@@ -1,0 +1,21 @@
+---
+layout: page
+title: Projetos
+---
+
+{% for project in site.data.projects %}
+  <div class="project-header">
+    {{project.title}}
+  </div>
+  <div class="card project">
+    <div class="content">
+      <img src="/assets/images/projects/{{project.image}}" />
+      <span class="description">{{project.description}}</span>
+      <div class="techs">
+        {% for tech in project.techs %}
+          <span>{{tech}}</span>
+        {% endfor %}  
+      </div>
+    </div>
+  </div>
+{% endfor %}  

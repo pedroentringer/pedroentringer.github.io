@@ -87,69 +87,73 @@ import puppeteer from 'puppeteer'
 
 Repare que substituímos o axios pelo puppeteer.
 E agora é só abrir o navegador, acessar o site, e **daaaale**.
-<pre><code class="language-javascript">//Com o puppeteer eu chamo um navegador
-const browser = await puppeteer.launch({
-  headless: true //Aqui eu defino se quero que ele apareça ou não => true (não aparece) | false (aparece)
-})
+<pre><code class="language-javascript">const webscraping = async () => {
 
-try {
+  //Com o puppeteer eu chamo um navegador
+  const browser = await puppeteer.launch({
+    headless: true //Aqui eu defino se quero que ele apareça ou não => true (não aparece) | false (aparece)
+  })
 
-  //Crio uma nova aba no navegador
-  const page = await browser.newPage()
+  try {
 
-  //Acesso a pagina de login do painel
-  await page.goto('meu_site/admin')
+    //Crio uma nova aba no navegador
+    const page = await browser.newPage()
 
-  //Insiro meu email no input de login
-  await page.type('input[id=username]', 'oi@pedroentringer.dev')
+    //Acesso a pagina de login do painel
+    await page.goto('meu_site/admin')
 
-  //Insiro minha senha no input do login
-  await page.type('input[id=login]', 'minha_senha')
+    //Insiro meu email no input de login
+    await page.type('input[id=username]', 'oi@pedroentringer.dev')
 
-  //Clico no botão de Entrar
-  await page.click('input[type=submit]')
+    //Insiro minha senha no input do login
+    await page.type('input[id=login]', 'minha_senha')
 
-  /**
-   *  Agora eu preciso aguardar o site carregar
-   *  e o elemento com id #grid_tab_reviewed_products aparecer na tela
-   *  
-   *  No painel do Magento 1.9 esse elemento representa um botão que 
-   *  irá carregar na tela uma tabela com os 5 produtos mais visitados no site
-   *  
-   *  Assim que ele aparecer eu clico nele
-   */
-  await page.waitForSelector('#grid_tab_reviewed_products', { visible: true, timeout: 0 })
-  await page.click('#grid_tab_reviewed_products')
+    //Clico no botão de Entrar
+    await page.click('input[type=submit]')
 
-  /**
-   * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
-   */
-  await page.waitForSelector('#productsReviewedGrid_table', { visible: true, timeout: 0 })
+    /**
+    *  Agora eu preciso aguardar o site carregar
+    *  e o elemento com id #grid_tab_reviewed_products aparecer na tela
+    *  
+    *  No painel do Magento 1.9 esse elemento representa um botão que 
+    *  irá carregar na tela uma tabela com os 5 produtos mais visitados no site
+    *  
+    *  Assim que ele aparecer eu clico nele
+    */
+    await page.waitForSelector('#grid_tab_reviewed_products', { visible: true, timeout: 0 })
+    await page.click('#grid_tab_reviewed_products')
 
-  /**
-   * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
-   * Basta pegar o html da pagina e manipular com o cheerio
-   */
-  const html = await page.content()
+    /**
+    * Apos o clique, preciso esperar nossa tabela aparecer, pois o Magento irá fazer um request e buscar esses dados
+    */
+    await page.waitForSelector('#productsReviewedGrid_table', { visible: true, timeout: 0 })
 
-  //Lembre-se sempre de fechar o navegador kkk
-  await browser.close()
+    /**
+    * Perfeito, agora que chegamos aqui, é como se estivessemos naquele exemplo simples
+    * Basta pegar o html da pagina e manipular com o cheerio
+    */
+    const html = await page.content()
 
-  //Importo o HTML do site atual para o cheerio
-  const $ = cheerio.load(html)
-  
-  //Ativo o modulo de converter a tabela
-  parseTable($)
+    //Lembre-se sempre de fechar o navegador kkk
+    await browser.close()
 
-  //converto a tabela para JSON
-  const table = $('#productsReviewedGrid_table').parseTable()
+    //Importo o HTML do site atual para o cheerio
+    const $ = cheerio.load(html)
+    
+    //Ativo o modulo de converter a tabela
+    parseTable($)
 
-  console.log(table)
+    //converto a tabela para JSON
+    const table = $('#productsReviewedGrid_table').parseTable()
 
-} catch (err) {
-  await browser.close()
-  console.error(err)
+    console.log(table)
+
+  } catch (err) {
+    await browser.close()
+    console.error(err)
+  }
 }
+webscraping()
 </code></pre>
 
 O mais legal é o resultado super fácil de manipular, veja:
