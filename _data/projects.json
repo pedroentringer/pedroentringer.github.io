@@ -6,9 +6,15 @@
     "image": "portal-uniaoes.png"
   },
   {
+    "title": "Email Marketing - Little Rock",
+    "description": "<p>Software que faz envios automaticos de e-mail marketing para todos os clientes que estão cadastrados.</p><p>Os e-mails são enviados via Amazon SES, o que nos permite enviar milhares de emails com um preço muito mais justo do que outros serviços similares.</p><p>Em todos os e-mails são enviados também os 5 pedidos mais vistos do site, e isso acontece sem nenhuma interação humana.</p><p>Isso é um e-mail marketing 100% automatizado.</p>",
+    "techs": ["Node.js", "Amazon SES", "Handlebars"],
+    "image": "email-marketing-littlerock-campanha.png"
+  },
+  {
     "title": "Demonstrativo de Resultado - DRE",
     "description": "<p>Script que cruza dados de várias tabelas de um banco de dados,aplica várias regras de negócios e financeiras para poder gerar um relatório semanal para os gestores da empresa.</p><p>No email é enviado o resultado atual do mês corrente, todas as despesas em hierarquia, checklist de lançamentos, relatórios para auditoria e detalhamento do resultado e despesas por cliente e por parceiro.</p><p>O script ainda gera alertas automaticos caso haja prejuizo em algum setor.</p>",
-    "techs": ["Node.js", "Amazon SES", "Microsoft SQL"],
+    "techs": ["Node.js", "Amazon SES", "Microsoft SQL", "Handlebars"],
     "image": "iconex-dre-email.png"
   },
   {
@@ -20,7 +26,7 @@
   {
     "title": "Script - Integração - Tracking",
     "description": "<p>Toda empresa logística precisa enviar todos os dados de movimentações dos pedidos para os seus respectivos clientes (contratantes).</p><p>E o grande problema é que cada cliente possue um formato diferente para receber essa informação, então acaba gastando muito tempo de desenvolvimento</p><p>Para resolver esse problema, eu desenvolvi um software integrador. Basta configurarmos um novo cliente nele (processo dura 2 minutos), e após isso o software irá se adequar ao formato e ao método de envio do cliente <strong>automagicamente</strong>.</p><strong>Tipo de arquivos suportados</strong><ul><li>EDI</li><li>JSON</li><li>XML</li><li>CSV</li></ul><strong>Tipo de envios suportados</strong><ul><li>API</li><li>Webservice</li><li>E-Mail</li><li>FTP</li></ul>",
-    "techs": ["Node.js", "MongoDB", "Microsoft SQL", "Handlebars"]
+    "techs": ["Node.js", "MongoDB", "Microsoft SQL",]
   },
   {
     "title": "Website - Role em Lux",
