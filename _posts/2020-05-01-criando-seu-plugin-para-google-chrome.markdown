@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Criando seu plugin para Google Chrome"
-date:   2020-05-01 07:23:00
+date:   2020-05-01 07:20:00
 categories: Nodejs
 ---
 
