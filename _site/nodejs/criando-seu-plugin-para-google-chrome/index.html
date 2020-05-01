@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Pedro Entringer - Um tanto quanto curioso</title>
+    <meta name="description" content="Pedro Entringer | Developer" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/prism.css" />
+
+</head>
+<body class="home-template">
+
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="https://pedroentringer.dev/">Home</a>
+        <a class="subscribe-button icon-feed" href="https://pedroentringer.dev/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        
+        <header class="post-header">
+            <section class="post-meta">
+                Pedro Entringer
+                <time class="post-date" datetime="2020-05-01">01 May 2020</time>
+                
+                    on Nodejs
+                
+            </section>
+            <h1 class="post-title">Criando seu plugin para Google Chrome</h1>
+        </header>
+
+        <section class="post-content">
+            <p>Heeeey, já vimos que na internet tem vaaaarios tutoriais sobre este tema, não é mesmo?
+Vamos pra mais um, só que dessa vez, sem <strong>pop-up</strong> hahaha.</p>
+
+<p>Ah, e esse plugin vai funcionar no Google Chrome, Opera e no novo Edge.</p>
+
+<p>O que nós vamos fazer por aqui é explorar aquele menu que aparece nos sites quando clicamos com o botão direito do mouse. Iremos criar uma opção para compartilhar um texto selecionado com algum contato do <strong>WhatsApp</strong> que for definido no script.</p>
+
+<p><img src="/assets/images/posts/5d73b650-3a82-4487-b133-a66217e0a7a7.png" alt="Menu do navegador" /></p>
+
+<h3 id="lets-go-to-code">Let’s go to code</h3>
+<p>Vamos iniciar nosso projeto com uma pasta em branco, e nela criaremos o primeiro arquivo chamado <strong>manifest.json</strong>. Este arquivo contem todos os detalhes de nossa extensão e eu vou explicar os mais importantes agora.</p>
+
+<p>Vamos colocar nele essas configurações:</p>
+
+<pre><code class="language-json">{
+  "background": {
+    "persistent": false,
+    "scripts": ["src/index.js"]
+  },
+  "browser_action": {
+    "default_title": "Compartilhamento do Pedro",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png"
+  },
+  "description": "Compartilhar frases e sites",
+  "manifest_version": 2,
+  "name": "Compartilhamento do Pedro",
+  "permissions": ["contextMenus"],
+  "short_name": "Compartilhamento do Pedro",
+  "version": "0.1"
+}
+</code></pre>
+
+<p>Vamos ver melhor o que significa isso:</p>
+<ul>
+  <li><strong>background</strong>: aqui ficam as configurações de segundo plano, ou seja, aquilo que vai acontecer por tras da tela.
+    <ul>
+      <li><strong>persist</strong>: definimos que não vamos salvar nada, ou seja, não iremos persistir nenhum dado.</li>
+      <li><strong>scripts</strong>: e aqui vem o principal, serão os nossos arquivos de javascript que irão manipular o menu.</li>
+    </ul>
+  </li>
+  <li><strong>browser_action</strong>: aqui ficam as configurações mais visuais como icone e titulo que irão aparecer no menu.</li>
+  <li><strong>permissions</strong>: Este passo é muito importante, pois sempre precisaremos deixar claro as permissões que desejamos usar. E para o nosso tutorial precisaremos apenas do <strong>contextMenus</strong>, mas você pode ver as outras <a href="https://support.google.com/chrome/a/answer/7515036?hl=pt-BR" title="Permissões de Aplicativos e Extensões">clicando aqui</a>.</li>
+</ul>
+
+<p>Feito isso vamos colocar um icone na extensão né, e pode ser na raiz do projeto mesmo, no meu caso vou por minha foto de perfil hahahah.</p>
+
+<p><strong>Lembre-se</strong> de colocar o arquivo com o mesmo nome e extensão que foi inserido no <strong>manifest.json</strong></p>
+
+<h4 id="cadê-o-código">Cadê o código?</h4>
+<p>kkkk eu sei, eu sei. Falei demais. <strong>bora codar</strong>.</p>
+
+<p>Crie uma pasta <code class="highlighter-rouge">src</code> e um <code class="highlighter-rouge">index.js</code> nela e vamos entender duas coisas. A instalação e as funcionalidades.</p>
+
+<h5 id="instalação">Instalação</h5>
+<p>Sempre que você instala uma extensão o chrome vai executar uma função chamada <code class="highlighter-rouge">chrome.runtime.onInstalled</code>. E é essa função que iremos usar para criarmos os nossos menus.</p>
+
+<p>Pra começar vamos definir quais serão os nossos menus, dessa forma:</p>
+<pre><code class="language-javascript">const menus = [
+  {
+    id: 'numero01',
+    title: 'Compartilhar com a pessoa 01'
+  },
+  {
+    id: 'numero02',
+    title: 'Compartilhar com a pessoa 02'
+  }
+];
+</code></pre>
+
+<p>Show, agora vamos entender como vai funcionar esse onInstalled do chrome.</p>
+<pre><code class="language-javascript">const onInstalled = () =&gt; {
+  //essa função vai executar sempre que a extensão for instalada
+}
+
+chrome.runtime.onInstalled.addListener(onInstalled)
+</code></pre>
+
+<p>Bom, se já temos uma função que vai ser executada logo de inicio, é nela que iremos criar nossos menus. E vamos fazer isto usando uma outra função do chrome que é a <code class="highlighter-rouge">chrome.contextMenus.create</code>, então vamos percorrer todos os nossos menus e cria-los.</p>
+
+<pre><code class="language-javascript">const menus = [
+  {
+    id: 'numero01',
+    title: 'Compartilhar com a pessoa 01'
+  },
+  {
+    id: 'numero02',
+    title: 'Compartilhar com a pessoa 02'
+  }
+];
+
+const onInstalled = () =&gt; {
+
+  for (const menu of menus) {
+
+    chrome.contextMenus.create({ 
+      ...menu, 
+      contexts: ['selection'], 
+    })
+        
+  }
+
+}
+
+chrome.runtime.onInstalled.addListener(onInstalled)
+</code></pre>
+
+<p>Reparou que o <code class="highlighter-rouge">chrome.contextMenus.create</code> recebe um <code class="highlighter-rouge">Object</code> como parâmetro? É isso que são os menus do chrome hehehe.</p>
+
+<p>Nós ainda passamos um array de <strong>contexts</strong> pra essa função, e pra que isso server? É aqui onde definimos quando o menu aparece. Usando o context <strong>selection</strong> estamos dizendo que o menu vai aparecer sempre que selecionarmos um texto em algum site e clicarmos com o botão direito.</p>
+
+<p>Você pode ver todos os contexts permitidos <a href="https://developer.chrome.com/apps/contextMenus#type-ContextType" title="Contexts">clicando aqui</a>.</p>
+
+<p>Se testarmos essa extensão agora, já vamos conseguir ver nossos menus por lá:
+<img src="/assets/images/posts/12028790-eb93-4015-aaee-252a8bf74dc8.png" alt="Menu do navegador com as nossas opções" /></p>
+
+<h5 id="funcionalidade">Funcionalidade</h5>
+<p>Shoooow, já chegamos até aqui! Agora é mole demais!</p>
+
+<p>Pra adicionar funcionalidade ao clique em nosso menu iremos usar a outra função do chrome que é a <code class="highlighter-rouge">chrome.contextMenus.onClicked</code> e o nosso código vai ficar mais ou menos assim:</p>
+
+<pre><code class="language-javascript">const onClicked = (data, tab) =&gt; {
+    const { menuItemId, selectionText} = data
+    alert(`Selecionou o texto "${selectionText}" para compartilhar com "${menuItemId}"`)
+}
+
+chrome.contextMenus.onClicked.addListener(onClicked)
+</code></pre>
+
+<p>Agora sempre que selecionarmos um texto e usarmos nosso compartilhamento o navegador vai mostrar isso em um alerta hehehe
+<img src="/assets/images/posts/e7e74506-a182-4dc7-9983-96078f8cb539.png" alt="Menu do navegador com as nossas opções" /></p>
+
+<p><strong>Mas é só isso?</strong> kkkkkk Calma. Vamos de fato compartilhar o texto!</p>
+
+<p>Então agora é simples, já temos o texto e o numero da pessoa, então é só fazer o redirect pra url do <strong>WhatsApp</strong> usando outro recurso do chrome chamado <code class="highlighter-rouge">chrome.tabs.create</code> que irá criar uma aba no navegador com a url que passarmos.</p>
+
+<pre><code class="language-javascript">const onClicked = (data, tab) =&gt; {
+    
+    const { menuItemId, selectionText} = data
+    
+    const resource = new URL("https://api.whatsapp.com/send")
+    resource.searchParams.append('phone', menuItemId)
+    resource.searchParams.append('text', selectionText)
+
+    chrome.tabs.create({ url: resource.href })
+
+}
+</code></pre>
+
+<p>E se você fez tudo certinho seu plugin já estará funcionando perfeitamente!!!</p>
+
+<p>Claro que esse exemplo é bastante simples, e você provavelmente não irá usar para nada, mas o que vale é entender o funcionamento de extensões do chrome.</p>
+
+<p>Aqui no trabalho nós usamos uma extensão semelhante a essa pra poder consultar pedidos diretamente do e-mail sem precisar ficar abrindo o sistema toda vez. Ah, e a extensão foi criada dessa mesma forma.</p>
+
+<p>O código completo ficou assim:</p>
+<pre><code class="language-javascript">const menus = [
+    {
+        id: 'pessoa-01',
+        title: 'Compartilhar com a pessoa 01'
+    },
+    {
+        id: 'pessoa-02',
+        title: 'Compartilhar com a pessoa 02'
+    }
+];
+  
+const onInstalled = () =&gt; {
+
+    for (const menu of menus) {
+
+        chrome.contextMenus.create({ 
+        ...menu, 
+        contexts: ['selection'], 
+        })
+            
+    }
+
+}
+
+const onClicked = (data, tab) =&gt; {
+
+    const { menuItemId, selectionText} = data
+    
+    const resource = new URL("https://api.whatsapp.com/send")
+    resource.searchParams.append('phone', menuItemId)
+    resource.searchParams.append('text', selectionText)
+
+    chrome.tabs.create({ url: resource.href })
+
+}
+
+chrome.contextMenus.onClicked.addListener(onClicked)
+chrome.runtime.onInstalled.addListener(onInstalled)
+</code></pre>
+
+<p>Super bacana né? E você pode aplicar isso em diversas outras funcionalidades. Aqui não existem limites. hehehe</p>
+
+<p><strong>Divirta-se!</strong></p>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Pedro Entringer's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Pedro Entringer </h4>
+                    <!-- Author Bio -->
+                    <p>
+                        Graduado em Sistemas de Informação, apaixonado por novas tecnologias. Gosta de criar sistemas funcionais que resolvem problemas reais.
+                    </p>
+                </section>
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Criando seu plugin para Google Chrome&amp;url=https://pedroentringer.dev/nodejs/criando-seu-plugin-para-google-chrome/"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pedroentringer.dev/nodejs/criando-seu-plugin-para-google-chrome/"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pedroentringer.dev/nodejs/criando-seu-plugin-para-google-chrome/" 
+        onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;">
+        <span class="linkedin">In</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'pedro-entringer'; 
+        var disqus_developer = 0; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Pedro Entringer</a> &copy; 
+              2020 &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/prism.js"></script>
+
+    <script data-ad-client="ca-pub-5159781683513837" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-165073538-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>
