@@ -26,7 +26,7 @@
   {
     "title": "Script - Integração - Tracking",
     "description": "<p>Toda empresa logística precisa enviar todos os dados de movimentações dos pedidos para os seus respectivos clientes (contratantes).</p><p>E o grande problema é que cada cliente possue um formato diferente para receber essa informação, então acaba gastando muito tempo de desenvolvimento</p><p>Para resolver esse problema, eu desenvolvi um software integrador. Basta configurarmos um novo cliente nele (processo dura 2 minutos), e após isso o software irá se adequar ao formato e ao método de envio do cliente <strong>automagicamente</strong>.</p><strong>Tipo de arquivos suportados</strong><ul><li>EDI</li><li>JSON</li><li>XML</li><li>CSV</li></ul><strong>Tipo de envios suportados</strong><ul><li>API</li><li>Webservice</li><li>E-Mail</li><li>FTP</li></ul>",
-    "techs": ["Node.js", "MongoDB", "Microsoft SQL",]
+    "techs": ["Node.js", "MongoDB", "Microsoft SQL"]
   },
   {
     "title": "Website - Role em Lux",
