@@ -1,7 +1,7 @@
 [
   {
     "title": "Website UniãoES",
-    "description": "<p>Portal Web criado no para receber doações de colaboradores neste momento de pandemia que o mundo está passando.<br />Possui upload de marcas e portal da transparência.</p>",
+    "description": "<p>Portal Web criado no para receber doações de colaboradores neste momento de pandemia que o mundo está passando.<br />Possui upload de marcas e portal da transparência, além de controlar tansações via PicPay, Cartão de Crédito, Boleto e TED.</p>",
     "techs": ["Node.js", "React.js", "TypeScript", "MongoDB"],
     "image": "portal-uniaoes.png"
   },
