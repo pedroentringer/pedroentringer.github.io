@@ -1,0 +1,12 @@
+<section class="courses">
+    <h4>já viu esses cursos?</h4>
+
+    <div class="list">
+        {% for course in site.data.courses %}
+            <a class="courses-card"  href="{{course.url}}">
+                <img src="{{course.image}}" />
+                <h5>{{course.name}}</h5>
+            </a>
+        {% endfor %} 
+    </div>
+</section>

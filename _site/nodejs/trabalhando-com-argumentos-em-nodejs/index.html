@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/prism.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 </head>
 <body class="home-template">
 
@@ -147,6 +149,31 @@ console.log(args)
     </a>
 </section>
 
+            <!-- Courses -->
+            <section class="courses">
+    <h4>já viu esses cursos?</h4>
+
+    <div class="list">
+        
+            <a class="courses-card"  href="https://go.hotmart.com/N33164048O">
+                <img src="https://static-media.hotmart.com/FRC7ec9-eDmC-wMLmIwDLwEgWxQ=/filters:background_color(white)/hotmart/product_pictures/ed8952ce-60d5-405d-b068-e78157e4fd1a/CursoLinkedInLogo.png" />
+                <h5>Marketing Pessoal</h5>
+            </a>
+        
+            <a class="courses-card"  href="https://go.hotmart.com/V33180023R?dp=1">
+                <img src="https://static-media.hotmart.com/wnjHmMeLaKyy-cgE5pwOkxhWcq8=/600x600/smart/filters:format(jpg):background_color(white)/hotmart/product_contents/2d40fb1b-a482-4492-ad83-20fc8029facc/mongodbcaneca.jpeg" />
+                <h5>Domine o MongoDB</h5>
+            </a>
+        
+            <a class="courses-card"  href="https://go.hotmart.com/X33164473A">
+                <img src="https://static-media.hotmart.com/tQMXZEKvYw0Qtfjuraq3fpjuWpA=/600x0/filters:background_color(white)/hotmart/product_pictures/0d61f6e1-ab23-4edd-8c07-3132170c8714/cursodephporientadoaobjetos3.jpg" />
+                <h5>PHP Orientado a Objetos</h5>
+            </a>
+         
+    </div>
+</section>
+
+
             <!-- Disqus comments -->
             <section class="disqus">
     <div id="disqus_thread"></div>
@@ -180,6 +207,18 @@ console.log(args)
         <a href="http://github.com/rosario/kasper">Kasper theme</a>
       </section>
     </footer>
+
+    <div id="campaign" class="animate__animated animate__backInRight">
+      <span id="close-campaign" onclick="closeCampaign()">X</span>
+      <a href="https://go.hotmart.com/N33164048O">
+        <img src="https://static-media.hotmart.com/FRC7ec9-eDmC-wMLmIwDLwEgWxQ=/filters:background_color(white)/hotmart/product_pictures/ed8952ce-60d5-405d-b068-e78157e4fd1a/CursoLinkedInLogo.png" />
+        <div class="content">
+          <h4>Marketing Pessoal</h4>
+          <p><strong>Dev</strong>, você quer aprender a melhor maneira de ser visto no <strong>Linkedin</strong>? Acesse este curso aprenda mais sobre Marketing Pessoal e Criação de Conteudo.</p>
+        </div>
+      </a>
+      
+    </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
@@ -202,5 +241,13 @@ console.log(args)
       })();
 
     </script>   
+
+    <script type="text/javascript">
+      function closeCampaign() {
+        let campaign = document.getElementById("campaign");
+        campaign.classList.remove('animate__backInRight');
+        campaign.classList.add('animate__backOutRight')
+      }
+    </script>
 </body>
 </html>

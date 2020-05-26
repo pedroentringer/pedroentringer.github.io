@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/prism.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 </head>
 <body class="home-template">
 
@@ -289,6 +291,18 @@
         <a href="http://github.com/rosario/kasper">Kasper theme</a>
       </section>
     </footer>
+
+    <div id="campaign" class="animate__animated animate__backInRight">
+      <span id="close-campaign" onclick="closeCampaign()">X</span>
+      <a href="https://go.hotmart.com/N33164048O">
+        <img src="https://static-media.hotmart.com/FRC7ec9-eDmC-wMLmIwDLwEgWxQ=/filters:background_color(white)/hotmart/product_pictures/ed8952ce-60d5-405d-b068-e78157e4fd1a/CursoLinkedInLogo.png" />
+        <div class="content">
+          <h4>Marketing Pessoal</h4>
+          <p><strong>Dev</strong>, você quer aprender a melhor maneira de ser visto no <strong>Linkedin</strong>? Acesse este curso aprenda mais sobre Marketing Pessoal e Criação de Conteudo.</p>
+        </div>
+      </a>
+      
+    </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
@@ -311,5 +325,13 @@
       })();
 
     </script>   
+
+    <script type="text/javascript">
+      function closeCampaign() {
+        let campaign = document.getElementById("campaign");
+        campaign.classList.remove('animate__backInRight');
+        campaign.classList.add('animate__backOutRight')
+      }
+    </script>
 </body>
 </html>

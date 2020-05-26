@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/prism.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 </head>
 <body class="home-template">
 
@@ -33,9 +35,10 @@
             </h2>
 
             <div class="home-buttons">
-                <a href="mailto:pedroentringer97@gmail.com"class="button" target="_blank"><img src="/assets/images/social/email.png" /></a>
-                <a href="https://www.linkedin.com/in/pedroentringer/"class="button" target="_blank"><img src="/assets/images/social/linkedin.png" /></a>
+                <a href="https://github.com/pedroentringer"class="button" target="_blank"><img src="/assets/images/social/github.png" /></a>
+                <a href="https://www.linkedin.com/in/pedroentringer"class="button" target="_blank"><img src="/assets/images/social/linkedin.png" /></a>
                 <a href="https://api.whatsapp.com/send?phone=5527981670051&text=Faaala%20Pedro,%20beleza?"class="button" target="_blank"><img src="/assets/images/social/whatsapp.png" /></a>
+                <a href="mailto:pedroentringer97@gmail.com"class="button" target="_blank"><img src="/assets/images/social/email.png" /></a>
             </div>
 
         </div>
@@ -72,6 +75,31 @@
      
 </nav>
     </div>
+
+    
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/nodejs/automatizando-tarefas-com-o-whatsapp/">Automatizando tarefas com o WhatsApp</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>Heeeey, tudo bem contigo? Estou muito animado com essa dica de hoje, porque eu amo esse tipo de projeto. Espero que você curta essa <strong>experiência</strong>.</p>
+
+ <a class="read-more" href="/nodejs/automatizando-tarefas-com-o-whatsapp/">&raquo;</a>
+        </section>
+        <footer class="post-meta" style="margin-top: 10px">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Pedro Entringer
+            
+             
+                on Nodejs 
+            
+            <time class="post-date" datetime="2020-05-12">
+                12 May 2020
+            </time> 
+        </footer>
+    </article>
 
     
 
@@ -168,6 +196,18 @@ Vamos pra mais um, só que dessa vez, sem <strong>pop-up</strong> hahaha.</p>
         <a href="http://github.com/rosario/kasper">Kasper theme</a>
       </section>
     </footer>
+
+    <div id="campaign" class="animate__animated animate__backInRight">
+      <span id="close-campaign" onclick="closeCampaign()">X</span>
+      <a href="https://go.hotmart.com/N33164048O">
+        <img src="https://static-media.hotmart.com/FRC7ec9-eDmC-wMLmIwDLwEgWxQ=/filters:background_color(white)/hotmart/product_pictures/ed8952ce-60d5-405d-b068-e78157e4fd1a/CursoLinkedInLogo.png" />
+        <div class="content">
+          <h4>Marketing Pessoal</h4>
+          <p><strong>Dev</strong>, você quer aprender a melhor maneira de ser visto no <strong>Linkedin</strong>? Acesse este curso aprenda mais sobre Marketing Pessoal e Criação de Conteudo.</p>
+        </div>
+      </a>
+      
+    </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
@@ -190,5 +230,13 @@ Vamos pra mais um, só que dessa vez, sem <strong>pop-up</strong> hahaha.</p>
       })();
 
     </script>   
+
+    <script type="text/javascript">
+      function closeCampaign() {
+        let campaign = document.getElementById("campaign");
+        campaign.classList.remove('animate__backInRight');
+        campaign.classList.add('animate__backOutRight')
+      }
+    </script>
 </body>
 </html>

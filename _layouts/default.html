@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/prism.css" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 </head>
 <body class="{% if page.post_class %}{{page.post_class}}{% else %}home-template{% endif %}">
 
@@ -30,6 +32,18 @@
         <a href="http://github.com/rosario/kasper">Kasper theme</a>
       </section>
     </footer>
+
+    <div id="campaign" class="animate__animated animate__backInRight">
+      <span id="close-campaign" onclick="closeCampaign()">X</span>
+      <a href="{{site.data.course.url}}">
+        <img src="{{site.data.course.image}}" />
+        <div class="content">
+          <h4>{{site.data.course.title}}</h4>
+          <p>{{site.data.course.description}}</p>
+        </div>
+      </a>
+      
+    </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
@@ -52,5 +66,13 @@
       })();
 
     </script>   
+
+    <script type="text/javascript">
+      function closeCampaign() {
+        let campaign = document.getElementById("campaign");
+        campaign.classList.remove('animate__backInRight');
+        campaign.classList.add('animate__backOutRight')
+      }
+    </script>
 </body>
 </html>
