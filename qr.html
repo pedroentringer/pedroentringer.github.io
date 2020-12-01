@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<header class="main-header">
+  
+  <div class="vertical">
+      <div class="main-header-content inner">
+        <div class="home-profile" style="background-image: url(/assets/images/profile.png)" ></div>
+          <h1 class="page-title">{{ site.name }}</h1>
+          <h2 class="page-description">
+              {% if site.description %} {{ site.description }}. {% endif %}
+          </h2>
+
+          <div class="home-buttons">
+              <a href="https://github.com/pedroentringer"class="button" target="_blank"><img src="/assets/images/social/github.png" /></a>
+              <a href="https://www.linkedin.com/in/pedroentringer"class="button" target="_blank"><img src="/assets/images/social/linkedin.png" /></a>
+              <a href="https://api.whatsapp.com/send?phone=5527981670051&text=Faaala%20Pedro,%20beleza?"class="button" target="_blank"><img src="/assets/images/social/whatsapp.png" /></a>
+              <a href="mailto:pedroentringer97@gmail.com"class="button" target="_blank"><img src="/assets/images/social/email.png" /></a>
+          </div>
+
+      </div>
+  </div>
+  <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+<article class="post">
+  <div class="splash about">
+      <div class="home-profile" style="background-image: url(/assets/images/profile.png)" ></div>
+      <div class="content">
+          <span class="title">Sobre mim</span>
+          <span class="description">Graduado em Sistemas de Informação, apaixonado por novas tecnologias. Gosta de criar sistemas funcionais que resolvem problemas reais.</span>
+      </div>
+  </div>
+  <div class="splash projects">
+      <div class="content">
+          <span class="title">Projetos</span>
+          <span class="description">Dê uma olhada nos projetos que já desenvolvi, espero que goste.</span>
+      </div>
+      <div class="btn">
+          <a href='{{ site.baseurl }}{{ page.projetos }}'>Ver Mais</a>
+      </div>
+  </div>
+
+  <div class="splash projects">
+    <div class="content">
+        <span class="title">Conteudo</span>
+        <span class="description">Nos tempos livres gosto de criar pequenos projetos e publicar o passo a passo de como fiz cada um deles</span>
+    </div>
+    <div class="btn">
+        <a href='{{ site.baseurl }}'>Ver Mais</a>
+    </div>
+  </div>
+</article> 
