@@ -8,7 +8,7 @@ highlighter: rouge
 
 logo: https://www.littlerock.com.br/skin/frontend/mageshop/tema02-skinlittlerock/images/media/logo.png
 paginate: 15
-baseurl: /
+baseurl: https://pedroentringer.dev/
 domain_name: 'https://pedroentringer.dev'
 google_analytics: 'UA-165073538-1'
 plugins: [jekyll-paginate]
