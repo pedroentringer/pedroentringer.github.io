@@ -1,8 +1,8 @@
 [
   {
     "title": "Dashboard Logística - Constance",
-    "description": "<p>Portal Web criado no para controlar toda a operação logistica da empresa Constance.</p>",
-    "techs": ["Next.js", "Prisma.js"],
+    "description": "<p>Portal Web criado no para controlar toda a operação logistica da empresa Constance.</p><p>Atualmente integrando com o Sistema <a href=\"https://www.datafrete.com/\" target=\"_blank\"DataFrete</a></p><p>Possui webhook para integração com qualquer sistema.</p>",
+    "techs": ["Next.js", "Prisma.js", "Postgres"],
     "image": "dashboard-log-constance.png"
   },
   {
