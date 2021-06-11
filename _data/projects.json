@@ -1,5 +1,11 @@
 [
   {
+    "title": "Dashboard Logística - Constance",
+    "description": "<p>Portal Web criado no para controlar toda a operação logistica da empresa Constance.</p>",
+    "techs": ["Next.js", "Prisma.js"],
+    "image": "dashboard-log-constance.png"
+  },
+  {
     "title": "Website UniãoES",
     "description": "<p>Portal Web criado no para receber doações de colaboradores neste momento de pandemia que o mundo está passando.<br />Possui upload de marcas e portal da transparência, além de controlar tansações via PicPay, Cartão de Crédito, Boleto e TED.</p>",
     "techs": ["Node.js", "React.js", "TypeScript", "MongoDB"],
@@ -48,7 +54,7 @@
   },
   {
     "title": "TCC - SOSCAR",
-    "description": "<p>Aplicativo para pedir socorro quando algo acontecer com seu veículo, independente do que seja.</p><p>Link para visualização: <a href='https://www.behance.net/gallery/91457847/iConex-Entrega' target='_blank' >Abrir Behance</a><p>",
+    "description": "<p>Aplicativo para pedir socorro quando algo acontecer com seu veículo, independente do que seja.</p><p>Link para visualização: <a href='https://www.behance.net/gallery/91457657/SOSCAR' target='_blank' >Abrir Behance</a><p>",
     "techs": ["Node.js", "React Native", "MongoDB"]
   },
   {
