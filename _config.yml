@@ -6,7 +6,7 @@ lang: pt-BR
 markdown: kramdown
 highlighter: rouge
 
-logo: https://www.littlerock.com.br/skin/frontend/mageshop/tema02-skinlittlerock/images/media/logo.png
+logo: https://pedroentringer.dev/assets/images/profile.jpg
 paginate: 5
 baseurl: https://pedroentringer.dev/
 domain_name: 'https://pedroentringer.dev'
