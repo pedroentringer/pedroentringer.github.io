@@ -1,7 +1,7 @@
 [
   {
     "title": "Dashboard Logística - Constance",
-    "description": "<p>Portal Web criado no para controlar toda a operação logistica da empresa Constance.</p><p>Atualmente integrando com o Sistema <a href=\"https://www.datafrete.com/\" target=\"_blank\">DataFrete</a></p><p>Possui webhook para integração com qualquer sistema.</p>",
+    "description": "<p>Web Portal created to control the entire logistical operation of Constance company.</p><p>Currently integrating with the System <a href=\"https://www.datafrete.com/\" target=\"_blank\">DataFrete</a></p><p>It has a webhook for integration with any system.</p>",
     "techs": [
       "Next.js",
       "Prisma.js",
@@ -12,7 +12,7 @@
   },
   {
     "title": "Website UniãoES",
-    "description": "<p>Portal Web criado no para receber doações de colaboradores neste momento de pandemia que o mundo está passando.<br />Possui upload de marcas e portal da transparência, além de controlar tansações via PicPay, Cartão de Crédito, Boleto e TED.</p>",
+    "description": "<p>Web portal created to receive donations from collaborators at this time of pandemic that the world is going through.<br />It has brand upload and transparency portal, in addition to controlling transactions via PicPay, Credit Card, Boleto and TED. </p>",
     "techs": [
       "Node.js",
       "React.js",
@@ -22,8 +22,8 @@
     "image": "portal-uniaoes.png"
   },
   {
-    "title": "Email Marketing - Little Rock",
-    "description": "<p>Software que faz envios automaticos de e-mail marketing para todos os clientes que estão cadastrados.</p><p>Os e-mails são enviados via Amazon SES, o que nos permite enviar milhares de emails com um preço muito mais justo do que outros serviços similares.</p><p>Em todos os e-mails são enviados também os 5 pedidos mais vistos do site, e isso acontece sem nenhuma interação humana.</p><p>Isso é um e-mail marketing 100% automatizado.</p>",
+    "title": "E-mail marketing - Little Rock",
+    "description": "<p>Software that automatically sends email marketing to all registered customers.</p><p>The emails are sent via Amazon SES, which allows us to send thousands of emails at a very high price fairer than other similar services.</p><p>In all emails the 5 most viewed requests from the site are also sent, and this happens without any human interaction.</p><p>This is a 100% automated email marketing.</p>",
     "techs": [
       "Node.js",
       "Amazon SES",
@@ -32,8 +32,8 @@
     "image": "email-marketing-littlerock-campanha.png"
   },
   {
-    "title": "Demonstrativo de Resultado - DRE",
-    "description": "<p>Script que cruza dados de várias tabelas de um banco de dados,aplica várias regras de negócios e financeiras para poder gerar um relatório semanal para os gestores da empresa.</p><p>No email é enviado o resultado atual do mês corrente, todas as despesas em hierarquia, checklist de lançamentos, relatórios para auditoria e detalhamento do resultado e despesas por cliente e por parceiro.</p><p>O script ainda gera alertas automaticos caso haja prejuizo em algum setor.</p>",
+    "title": "Income Statement",
+    "description": "<p>Script that crosses data from several tables of a database, applies various business and financial rules in order to generate a weekly report for the company's managers.</p><p>The current result is sent in the email. current month, all expenses in hierarchy, checklist of releases, reports for auditing and detailing of the result and expenses by customer and by partner.</p><p>The script also generates automatic alerts in case there is loss in any sector.</ p>",
     "techs": [
       "Node.js",
       "Amazon SES",
@@ -43,8 +43,8 @@
     "image": "iconex-dre-email.png"
   },
   {
-    "title": "iConex Entrega - Aplicativo Mobile",
-    "description": "<p>Aplicativo Offline First, armazena todos os dados no aparelho, e faz a sincronização em background via API REST. Controla toda a unidade operacional da iConex Logística.</p>",
+    "title": "Mobile App - iConex Entrega",
+    "description": "<p>Offline First application, stores all data on the device, and performs background synchronization via REST API. Controls the entire operational unit of iConex Logística.</p>",
     "techs": [
       "Node.js",
       "React Native",
@@ -53,8 +53,8 @@
     "image": "mobile-iconex-entrega.png"
   },
   {
-    "title": "Script - Integração - Tracking",
-    "description": "<p>Toda empresa logística precisa enviar todos os dados de movimentações dos pedidos para os seus respectivos clientes (contratantes).</p><p>E o grande problema é que cada cliente possue um formato diferente para receber essa informação, então acaba gastando muito tempo de desenvolvimento</p><p>Para resolver esse problema, eu desenvolvi um software integrador. Basta configurarmos um novo cliente nele (processo dura 2 minutos), e após isso o software irá se adequar ao formato e ao método de envio do cliente <strong>automagicamente</strong>.</p><strong>Tipo de arquivos suportados</strong><ul><li>EDI</li><li>JSON</li><li>XML</li><li>CSV</li></ul><strong>Tipo de envios suportados</strong><ul><li>API</li><li>Webservice</li><li>E-Mail</li><li>FTP</li></ul>",
+    "title": "Program - Integration - Logistics Movements - Tracking",
+    "description": "<p>Every logistics company needs to send all order movement data to their respective customers (contractors).</p><p>And the big problem is that each customer has a different format to receive this information, so it's over spending a lot of development time</p><p>To solve this problem, I developed an integrator software. We just set up a new client on it (the process takes 2 minutes), and after that the software will adapt to the format and method of sending the client <strong>automagically</strong>.</p><strong>Type of files supported </strong><ul><li>EDI</li><li>JSON</li><li>XML</li><li>CSV</li></ul><strong>Upload Type Supported </strong><ul><li>API</li><li>Webservice</li><li>E-Mail</li><li>FTP</li></ul>",
     "techs": [
       "Node.js",
       "MongoDB",
@@ -63,7 +63,7 @@
   },
   {
     "title": "Website - Role em Lux",
-    "description": "<p>Website criado para uma empresa da Europa, devendo ter 3 idiomas, sendo eles o <strong> português, inglês e francês</strong>.</p>",
+    "description": "<p>Website created for a company in Europe, with 3 languages, <strong>Portuguese, English and French</strong>.</p>",
     "techs": [
       "Node.js",
       "React.js",
@@ -73,8 +73,8 @@
     "image": "website-roleemlux.png"
   },
   {
-    "title": "iConex Cliente",
-    "description": "<p>Portal Web que gerencia todos os pedidos de um determinado cliente expedidor. Garante total visibilidade com uma grande simplicidade em todos os processos.</p>",
+    "title": "Website - iConex Cliente",
+    "description": "<p>Web portal that manages all orders for a given shipping customer. It guarantees total visibility with great simplicity in all processes.</p>",
     "techs": [
       "Node.js",
       "HTML5",
@@ -85,8 +85,8 @@
     "image": "iconex-portal-do-cliente.png"
   },
   {
-    "title": "ONEX - Módulo Operacional",
-    "description": "<p>Programa responsável por fazer a triagem, separação e emissão de pedidos que chegam no Centro de Distribuição da iConex Logística.</p><p>Todos os pedidos devem passar por este sistema, onde recebem um ID e uma etiqueta, que seja usado até o fim de todo o processo logístico.</p>",
+    "title": "Program ONEX - Operational Module",
+    "description": "<p>Program responsible for sorting, sorting and issuing orders that arrive at the iConex Logística Distribution Center.</p><p>All orders must go through this system, where they receive an ID and a tag, which be used until the end of the entire logistical process.</p>",
     "techs": [
       "Java",
       "Node.js",
@@ -95,8 +95,8 @@
     "image": "onex-operacional-java-check.png"
   },
   {
-    "title": "TCC - SOSCAR",
-    "description": "<p>Aplicativo para pedir socorro quando algo acontecer com seu veículo, independente do que seja.</p><p>Link para visualização: <a href='https://www.behance.net/gallery/91457657/SOSCAR' target='_blank' >Abrir Behance</a><p>",
+    "title": "Course Completion Thesis - SOSCAR",
+    "description": "<p>Application to call for help when something happens to your vehicle, no matter what.</p><p>Link to view: <a href='https://www.behance.net/gallery/91457657/SOSCAR ' target='_blank' >Open Behance</a><p>",
     "techs": [
       "Node.js",
       "React Native",
@@ -104,15 +104,15 @@
     ]
   },
   {
-    "title": "UI - Aplicativo de E-commerce",
-    "description": "<p>UI de um aplicativo mobile para vendar online. O cenário escolhido foi o de vinhos.</p><p>Link para visualização: <a href='https://www.behance.net/gallery/91457151/Ecommerce-APP' target='_blank' >Abrir Behance</a></p>",
+    "title": "UI - E-commerce application",
+    "description": "<p>UI of a mobile app to sell online. The chosen scenario was wines.</p><p>Link to view: <a href='https://www.behance.net/gallery/91457151/Ecommerce-APP' target='_blank' >Open Behance </a></p>",
     "techs": [
       "Invision Studio"
     ]
   },
   {
-    "title": "UI - Aplicativo de limpeza",
-    "description": "<p>UI de um aplicativo mobile para limpeza de veículos, projeto pensado em facilitar a forma de lavar carros.</p><p>Link para visualização: <a href='https://www.behance.net/gallery/91456719/Lavae' target='_blank' >Abrir Behance</a></p>",
+    "title": "UI - Cleaning Application",
+    "description": "<p>UI of a mobile application for vehicle cleaning, a project designed to facilitate the way to wash cars.</p><p>Link for viewing: <a href='https://www.behance.net/gallery /91456719/Lavae' target='_blank' >Open Behance</a></p>",
     "techs": [
       "Invision Studio"
     ]
