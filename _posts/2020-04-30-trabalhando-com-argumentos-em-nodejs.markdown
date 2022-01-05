@@ -1,5 +1,6 @@
 ---
 layout: post
+lang: pt-BR
 title:  "Trabalhando com argumentos em Node.js"
 date:   2020-04-30 13:00:00
 categories: Nodejs

@@ -1,5 +1,6 @@
 ---
 layout: post
+lang: pt-BR
 title:  "Automatizando tarefas com o WhatsApp"
 date:   2020-05-12 22:50:00
 categories: Nodejs

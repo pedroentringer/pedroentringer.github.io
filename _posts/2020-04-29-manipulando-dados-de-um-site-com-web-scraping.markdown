@@ -1,5 +1,6 @@
 ---
 layout: post
+lang: pt-BR
 title:  "Manipulando dados de um site com Web Scraping"
 date:   2020-04-29 18:30:00
 categories: Nodejs
