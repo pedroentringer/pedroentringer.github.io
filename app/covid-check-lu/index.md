@@ -5,10 +5,16 @@ title: Covid Check Lu
 
 <img src="/assets/images/pages/covid-check-lu-banner.jpg">
 
-**Le moyen le plus simple de valider et de sauvegarder vos certificats CovidCheck**
+**Le moyen le plus simple de valider et de sauvegarder vos certificats CovidCheck.**
 
-### IOS Download
-- Link
+Cette application vous permettra de valider vos certificats afin de confirmer l'authenticité de vos données.
 
-### Android Download
-- Link
+Dans cette application, vous pouvez valider ces certificats:
+• certificate of recovery;
+• vaccination certificate;
+• test certificate.
+
+Vous pourrez enregistrer vos certificats et ceux de votre famille pour les utiliser hors ligne chaque fois que vous en aurez besoin.
+
+<a href="#"><img src="/assets/images/pages/apple-store.png"></a>
+<a href="#"><img src="/assets/images/pages/google-play.png"></a>
