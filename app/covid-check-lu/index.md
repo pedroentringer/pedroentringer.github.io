@@ -16,5 +16,7 @@ Dans cette application, vous pouvez valider ces certificats:
 
 Vous pourrez enregistrer vos certificats et ceux de votre famille pour les utiliser hors ligne chaque fois que vous en aurez besoin.
 
-<a href="#"><img src="/assets/images/pages/apple-store.png" style="width: 200px;margin: 20px auto; opacity: 0.3;"></a>
-<a href="#"><img src="/assets/images/pages/google-play.png" style="width: 200px;margin: 20px auto; opacity: 0.3;"></a>
+<video controls>
+  <source src="/assets/video/covid-check-lu.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
