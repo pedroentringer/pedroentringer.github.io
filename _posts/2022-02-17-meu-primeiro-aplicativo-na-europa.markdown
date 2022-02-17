@@ -3,7 +3,7 @@ layout: post
 lang: pt-BR
 title:  "Meu primeiro aplicativo na Europa"
 date:   2022-02-17 14:12:00
-categories: React Native
+categories: ReactNative
 ---
 
 <img src="/assets/images/pages/covid-check-lu-banner.jpg">
