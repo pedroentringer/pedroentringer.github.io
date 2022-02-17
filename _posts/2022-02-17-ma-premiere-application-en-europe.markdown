@@ -34,7 +34,7 @@ Cela dit, j'ai décidé de comprendre comment les validations de ces règles fon
 La première étape a été de comprendre le fonctionnement de l'App, et avec un peu de temps j'ai pu constater que:
 - L'application a été écrite en ionique, ce qui m'a aidé, car j'ai beaucoup utilisé ionique dans le passé.
 - En lisant le code JS généré, j'ai pu identifier les validations qui se font dans:
-    -Base45
+    - Base45
     - CBOR
     - COSE
     - Signature PEM
@@ -51,7 +51,7 @@ Et en plus de cela, j'ai ajouté quelques fonctionnalités que l'application off
 
 Voir le résultat final :
 - [Vidéo d'application](https://pedroentringer.dev/app/covid-check-lu/)
-- [Mise en page initiale] (https://www.figma.com/file/FgWcvLqgUQyMF77909GxQM/CovidCheck---Lu?node-id=0%3A1)
+- [Mise en page initiale](https://www.figma.com/file/FgWcvLqgUQyMF77909GxQM/CovidCheck---Lu?node-id=0%3A1)
 
 <div class="splash projects">
     <div class="content">
