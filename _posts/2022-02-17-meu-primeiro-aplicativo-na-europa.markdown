@@ -16,8 +16,8 @@ Recentemente me mudei do Brasil para Luxemburgo, e tenho vivido ótimas experiê
 Aqui em Luxemburgo existe um certificado de vacinação **(UEDCC - Certificado Digital Covid da União Europeia)** que é exigido nos estabelecimentos (restaurantes, bares, shows, etc...) e cada momento da pandemia e/ou tipo de ambiente possuem regras diferentes.
 
 As regras são chamadas de 3G, 2G e 2G+ (Na ordem de dificuldade), veja com detalhes as regras nesses links:
-- https://guichet.public.lu/en/actualites/2021/decembre/28-app-covidcheck.html
-- https://covid19.public.lu/en/covidcheck.html#:~:text=The%202G%2B%20system,CoV%2D2%20rapid%20antigen%20test
+- [Regras Iniciais](https://guichet.public.lu/en/actualites/2021/decembre/28-app-covidcheck.html)
+- [Novas Atualizações](https://covid19.public.lu/en/covidcheck.html#:~:text=The%202G%2B%20system,CoV%2D2%20rapid%20antigen%20test)
 
 Para validar isso, o governo precisou criar um **App Offline First** para ler o QRCode de cada certificado e validar se:
 - O Certificado possuí uma assinatura digital válida
@@ -25,7 +25,7 @@ Para validar isso, o governo precisou criar um **App Offline First** para ler o 
 - O Certificado não foi adulterado
 - Está dentro da regra vigente
 
-Bom, em alguns momentos eu percebi que o App do governo fecha sozinho ou trava a ponto de não fazer as validações, o que fazia que os estabelecimentos nos liberassem sem fazer as validações necessárias.
+Bom, em alguns momentos eu percebi que o App do governo fecha sozinho ou trava a ponto de não fazer as validações, e com isso os estabelecimentos nos liberaram sem fazer as validações necessárias.
 
 Dito isso, eu resolvi entender como funcionavam as validações dessas regras dentro do APP que foi feito em ionic, para tentar replicar exatamente as mesmas validações usando React Native.
 
@@ -49,8 +49,10 @@ E de quebra, adicionei algumas funcionalidades que o App oficial não possuí, s
 - 5 idiomas disponíveis
 - Salvar os meus certificados offline
 
-Veja o resultado final em: https://pedroentringer.dev/app/covid-check-lu/
-Layout Inicial: https://www.figma.com/file/FgWcvLqgUQyMF77909GxQM/CovidCheck---Lu?node-id=0%3A1
+Veja o resultado final:
+- [Video do Aplicativo](https://pedroentringer.dev/app/covid-check-lu/)
+- [Layout inicial](https://www.figma.com/file/FgWcvLqgUQyMF77909GxQM/CovidCheck---Lu?node-id=0%3A1)
+
 
 <div class="splash projects">
     <div class="content">
