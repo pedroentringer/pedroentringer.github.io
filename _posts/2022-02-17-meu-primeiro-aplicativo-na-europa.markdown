@@ -6,11 +6,10 @@ date:   2022-02-17 13:12:00
 categories: ReactNative
 ---
 
+
+**Hey Dev, tudo bem contigo?** Hoje venho compartilhar uma experiência bem bacana que pude vivenciar em minha nova aventura.
+
 <img src="/assets/images/pages/covid-check-lu-banner.jpg">
-
-**Hey Dev, tudo bem contigo?**
-
-Hoje venho compartilhar uma experiência bem bacana que pude vivenciar em minha nova aventura.
 
 Aqui em Luxemburgo existe um certificado de vacinação (UEDCC - Certificado Digital Covid da União Europeia) que é exigido nos estabelecimentos (restaurantes, bares, shows, etc...) e cada momento da pandemia e/ou tipo de ambiente possuem regras diferentes.
 

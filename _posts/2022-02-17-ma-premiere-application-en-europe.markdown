@@ -6,11 +6,10 @@ date:   2022-02-17 13:16:00
 categories: ReactNative
 ---
 
+
+**Salut Dev, comment vas-tu?** Aujourd'hui je viens partager une très belle expérience que j'ai pu vivre dans ma nouvelle aventure.
+
 <img src="/assets/images/pages/covid-check-lu-banner.jpg">
-
-**Salut Dev, comment vas-tu?**
-
-Aujourd'hui je viens partager une très belle expérience que j'ai pu vivre dans ma nouvelle aventure.
 
 Ici au Luxembourg il y a un certificat de vaccination (UEDCC - Digital Covid Certificate of the European Union) qui est exigé dans les établissements (restaurants, bars, spectacles, etc...) et chaque moment de la pandémie et/ou type d'environnement a des effets différents des règles.
 
