@@ -1,7 +1,7 @@
 [
   {
     "title": "Digital Covid Certificate of the European Union",
-    "description": "<p>Mobile Application for IOS and Android</p><p>Its main function is to carry out the verification and validation of the vanication certificates required in Luxembourg.</p><p>See more details on the page where I talk about its creation:</p><ul><li>Read in Portuguese</li><li>Read in French</li></ul>",
+    "description": "<p>Mobile Application for IOS and Android</p><p>Its main function is to carry out the verification and validation of the vanication certificates required in Luxembourg.</p><p>See more details on the page where I talk about its creation:</p><ul><li><a href=\"https://www.pedroentringer.dev/reactnative/meu-primeiro-aplicativo-na-europa/\" target=\"_blank\">Read in Portuguese</a></li><li><a href=\"https://www.pedroentringer.dev/reactnative/ma-premiere-application-en-europe/\" target=\"_blank\">Read in French</a></li></ul>",
     "techs": [
       "React Native",
       "Expo",
@@ -23,7 +23,7 @@
   },
   {
     "title": "Dashboard Logística - iConex Logística",
-    "description": "<p>Web Portal created to control the entire logistical operation of iConex Logística company.</p><p>Currently integrating with the System <a href=\"http://w-cargo.com.br/\" target=\"_blank\">W-Cargo</a></p><p>In this project I was able to lead an excellent team composed of: <ul><li>Daniel Guerra | <a href=\"https://www.linkedin.com/in/danielgguerra/\" target=\"_blank\">Linkedin</a><li><li>Daniel Siller | <a href=\"https://www.linkedin.com/in/daniel-siller-thebaldi-109394196/\" target=\"_blank\">Linkedin</a><li><li>Marcus Castilho | <a href=\"https://www.linkedin.com/in/marcus-castilho-8a5725142/\" target=\"_blank\">Linkedin</a><li><li>Paulo Victor | <a href=\"https://www.linkedin.com/in/paulovictorveiga/\" target=\"_blank\">Linkedin</a><li></ul></p><p>Currently, this is the portal used throughout the company's operations.</p>",
+    "description": "<p>Web Portal created to control the entire logistical operation of iConex Logística company.</p><p>Currently integrating with the System <a href=\"http://w-cargo.com.br/\" target=\"_blank\">W-Cargo</a></p><p>In this project I was able to lead an excellent team composed of: <ul><li>Daniel Guerra | <a href=\"https://www.linkedin.com/in/danielgguerra/\" target=\"_blank\">Linkedin</a></li><li>Daniel Siller | <a href=\"https://www.linkedin.com/in/daniel-siller-thebaldi-109394196/\" target=\"_blank\">Linkedin</a></li><li>Marcus Castilho | <a href=\"https://www.linkedin.com/in/marcus-castilho-8a5725142/\" target=\"_blank\">Linkedin</a></li><li>Paulo Victor | <a href=\"https://www.linkedin.com/in/paulovictorveiga/\" target=\"_blank\">Linkedin</a></li></ul></p><p>Currently, this is the portal used throughout the company's operations.</p>",
     "techs": [
       "React.js",
       "Express.js",
