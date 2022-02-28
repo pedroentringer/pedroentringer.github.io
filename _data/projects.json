@@ -1,5 +1,42 @@
 [
   {
+    "title": "Digital Covid Certificate of the European Union",
+    "description": "<p>Mobile Application for IOS and Android</p><p>Its main function is to carry out the verification and validation of the vanication certificates required in Luxembourg.</p><p>See more details on the page where I talk about its creation:</p><ul><li>Read in Portuguese</li><li>Read in French</li></ul>",
+    "techs": [
+      "React Native",
+      "Expo",
+      "Node.js",
+      "CBOR",
+      "COSE"
+    ],
+    "image": "covid-check-lu-banner.jpg"
+  },
+  {
+    "title": "Mobile App - iConex Entrega",
+    "description": "<p>Offline First application, stores all data on the device, and performs background synchronization via REST API. Controls the entire operational unit of iConex Logística.</p>",
+    "techs": [
+      "Node.js",
+      "React Native",
+      "Microsoft SQL"
+    ],
+    "image": "mobile-iconex-entrega.png"
+  },
+  {
+    "title": "Dashboard Logística - iConex Logística",
+    "description": "<p>Web Portal created to control the entire logistical operation of iConex Logística company.</p><p>Currently integrating with the System <a href=\"http://w-cargo.com.br/\" target=\"_blank\">W-Cargo</a></p><p>In this project I was able to lead an excellent team composed of: <ul><li>Daniel Guerra | <a href=\"https://www.linkedin.com/in/danielgguerra/\" target=\"_blank\">Linkedin</a><li><li>Daniel Siller | <a href=\"https://www.linkedin.com/in/daniel-siller-thebaldi-109394196/\" target=\"_blank\">Linkedin</a><li><li>Marcus Castilho | <a href=\"https://www.linkedin.com/in/marcus-castilho-8a5725142/\" target=\"_blank\">Linkedin</a><li><li>Paulo Victor | <a href=\"https://www.linkedin.com/in/paulovictorveiga/\" target=\"_blank\">Linkedin</a><li></ul></p><p>Currently, this is the portal used throughout the company's operations.</p>",
+    "techs": [
+      "React.js",
+      "Express.js",
+      "Amazon SES",
+      "Amazon S3",
+      "Handlebars",
+      "MongoDB",
+      "Microsoft SQL",
+      "Python"
+    ],
+    "image": "iconex-ionex-dashboard.png"
+  },
+  {
     "title": "Dashboard Logística - Constance",
     "description": "<p>Web Portal created to control the entire logistical operation of Constance company.</p><p>Currently integrating with the System <a href=\"https://www.datafrete.com/\" target=\"_blank\">DataFrete</a></p><p>It has a webhook for integration with any system.</p>",
     "techs": [
@@ -41,16 +78,6 @@
       "Handlebars"
     ],
     "image": "iconex-dre-email.png"
-  },
-  {
-    "title": "Mobile App - iConex Entrega",
-    "description": "<p>Offline First application, stores all data on the device, and performs background synchronization via REST API. Controls the entire operational unit of iConex Logística.</p>",
-    "techs": [
-      "Node.js",
-      "React Native",
-      "Microsoft SQL"
-    ],
-    "image": "mobile-iconex-entrega.png"
   },
   {
     "title": "Program - Integration - Logistics Movements - Tracking",
